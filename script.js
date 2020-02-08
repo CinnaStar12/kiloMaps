@@ -13,47 +13,53 @@ document.querySelector("#make-floor-plan").addEventListener("click", function(ev
 document.querySelector("#make-rect").addEventListener("click", function(event){
     event.preventDefault();
 
-    let dragDiv = document.createElement("div");
-    dragDiv.setAttribute("id", "draggable");
-    dragDiv.setAttribute("style", "height:" + (parseInt(document.querySelector("#rect-height").value) + 10) + "px; width:" + (parseInt(document.querySelector("#rect-width").value) + 10) + "px; position:absolute; cursor:move");
-    document.querySelector("body").appendChild(dragDiv);
+    var userHeight = parseInt(document.querySelector("#rect-height").value);
+    var userWidth = parseInt(document.querySelector("#rect-width").value);
+    var userColor = document.querySelector("#rect-color").value;
 
-    console.log(parseInt(document.querySelector("#rect-height").value) + 10);
-    console.log(parseInt(document.querySelector("#rect-width").value) + 10);
-    console.log(dragDiv.getAttribute("style"));
-    console.log(dragDiv.getAttribute("id"));
-    console.log(document.querySelector(("#draggable-" + divCounter)))
+    createShape(userHeight, userWidth, userColor);
 
-    let newIllElement = "canvas-child-" + divCounter;
-    let newCanvas = document.createElement("canvas");
-    newCanvas.classList.add(newIllElement);
-    newCanvas.setAttribute("width", document.querySelector("#rect-width").value);
-    newCanvas.setAttribute("height", document.querySelector("#rect-height").value);
-    document.querySelector("#draggable").appendChild(newCanvas);
+    // console.log(dragDiv.getAttribute("style"));
+    // console.log(dragDiv.getAttribute("id"));
+    // console.log(document.querySelector(("#draggable-" + divCounter)))
     
-    console.log(newCanvas.getAttribute("class"));
-    
-    let userShape = new Zdog.Illustration({
-        element: "." + newIllElement,
-        zoom: 4,
-        dragRotate: true,
-    });
-    
-    let rect = new Zdog.Rect({
-        addTo: userShape,
-        width: document.querySelector("#rect-width").value,
-        height: document.querySelector("#rect-height").value,
-        translate: {z: 10},
-        stroke: 1,
-        color: '#E62',
-        fill: true
-    });
-
-    //divCounter++;
-
-    userShape.updateRenderGraph();
-    dragElement(document.querySelector("#draggable"));
+    // console.log(newCanvas.getAttribute("class"));
 })
+
+function createShape(userHeight, userWidth, userColor){
+  let dragDiv = document.createElement("div");
+  dragDiv.setAttribute("id", "draggable-" + divCounter);
+  dragDiv.setAttribute("style", "height:" + (userHeight + 10) + "px; width:" + (userWidth + 10) + "px; position:absolute; cursor:move");
+  document.querySelector("#shape-list").appendChild(dragDiv);
+
+  let newIllElement = "canvas-child-" + divCounter;
+  let newCanvas = document.createElement("canvas");
+  newCanvas.classList.add(newIllElement);
+  newCanvas.setAttribute("width", userWidth);
+  newCanvas.setAttribute("height", userHeight);
+  document.querySelector("#draggable-" + divCounter).appendChild(newCanvas);
+
+  let userShape = new Zdog.Illustration({
+    element: "." + newIllElement,
+    zoom: 4,
+    dragRotate: true,
+});
+
+  let rect = new Zdog.Rect({
+      addTo: userShape,
+      width: userWidth,
+      height: userHeight,
+      translate: {z: 10},
+      stroke: 1,
+      color: userColor,
+      fill: true
+  });
+
+  divCounter++;
+
+  userShape.updateRenderGraph();
+  dragElement(document.querySelector("#draggable"));
+}
 
 //Code taken from https://www.w3schools.com/howto/howto_js_draggable.asp
 function dragElement(elmnt) {
