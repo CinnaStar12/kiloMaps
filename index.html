@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>kiloMaps</title>
+</head>
+<body>
+    <form>
+        <input type="text" id="canvas-width" placeholder="Width of Floor">
+        <input type="text" id="canvas-height" placeholder="Length of Floor">
+        <input id="make-floor-plan" type="submit" value="Create Floor Plan">
+    </form>
+    <br><br>
+
+    <form>
+        <input type="text" id="rect-width" placeholder="Width">
+        <input type="text" id="rect-height" placeholder="Height">
+        <input id="make-rect" type="submit" value="Create Rectangle">
+    </form>
+    <br><br>
+    
+    <div id="user-canvas">
+    </div>
+
+    <script src="zdog.dist.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
