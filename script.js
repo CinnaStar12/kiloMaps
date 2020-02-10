@@ -1,25 +1,92 @@
 var divCounter = 0;
+var numArray = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
 
+//Creates the floor plan from the users inputs on the form
 document.querySelector("#make-floor-plan").addEventListener("click", function(event){
     event.preventDefault();
 
+    //For scaling, 1 foot = 48 pixels and 1 inch = 4 pixels
+    let widthFeet = parseInt(document.querySelector("#canvas-width").value) * 48;
+    let heightFeet = parseInt(document.querySelector("#canvas-height").value) * 48;
+    let widthString = document.querySelector("#canvas-width").value;
+    let heightString = document.querySelector("#canvas-height").value;
+    var widthArray = widthString.split("");
+    var heightArray = heightString.split("");
+    var widthInches = "";
+    var heightInches = "";
+
+    for(i = 0; i < widthArray.length; i++){
+      if(widthArray[i - 1] === "'" && numArray.indexOf(widthArray[i]) !== -1){
+        widthInches += widthArray[i];
+        if(numArray.indexOf(widthArray[i + 1]) !== -1){
+          widthInches += widthArray[i + 1];
+        }
+      }
+    }
+    widthInches = parseInt(widthInches) * 4;
+
+    for(i = 0; i < heightArray.length; i++){
+      if(heightArray[i - 1] === "'" && numArray.indexOf(heightArray[i]) !== -1){
+        heightInches += heightArray[i];
+        if(numArray.indexOf(heightArray[i + 1]) !== -1){
+          heightInches += heightArray[i + 1];
+        }
+      }
+    }
+    heightInches = parseInt(heightInches) * 4;
+
+    console.log(widthFeet + widthInches, heightFeet + heightInches)
+
     let newCanvas = document.createElement("canvas");
     newCanvas.classList.add("zdog-canvas");
-    newCanvas.setAttribute("width", document.querySelector("#canvas-width").value);
-    newCanvas.setAttribute("height", document.querySelector("#canvas-height").value);
+    newCanvas.setAttribute("width", widthFeet + widthInches);
+    newCanvas.setAttribute("height", heightFeet + heightInches);
     document.querySelector("#user-canvas").appendChild(newCanvas);
 })
 
+//This event listener is only for the initial html web page we loaded
 document.querySelector("#make-shape").addEventListener("click", function(event){
   event.preventDefault();
+
+  //Calculations for feet and inches
+  let widthFeet = parseInt(document.querySelector("#width").value) * 48;
+  let lengthFeet = parseInt(document.querySelector("#length").value) * 48;
+  let widthString = document.querySelector("#width").value;
+  let lengthString = document.querySelector("#length").value;
+  var widthArray = widthString.split("");
+  var lengthArray = lengthString.split("");
+  var widthInches = "";
+  var lengthInches = "";
+
+  for(i = 0; i < widthArray.length; i++){
+    if(widthArray[i - 1] === "'" && numArray.indexOf(widthArray[i]) !== -1){
+      widthInches += widthArray[i];
+      if(numArray.indexOf(widthArray[i + 1]) !== -1){
+        widthInches += widthArray[i + 1];
+      }
+    }
+  }
+  widthInches = parseInt(widthInches) * 4;
+
+  for(i = 0; i < lengthArray.length; i++){
+    if(lengthArray[i - 1] === "'" && numArray.indexOf(lengthArray[i]) !== -1){
+      lengthInches += lengthArray[i];
+      if(numArray.indexOf(lengthArray[i + 1]) !== -1){
+        lengthInches += lengthArray[i + 1];
+      }
+    }
+  }
+  lengthInches = parseInt(lengthInches) * 4;
+
   var shape = document.querySelector("#shape-options").value;
-  var userHeight = parseInt(document.querySelector("#height").value);
-  var userWidth = parseInt(document.querySelector("#width").value);
+  var userLength = lengthFeet + lengthInches;
+  var userWidth = widthFeet + widthInches;
   var userColor = document.querySelector("#color").value;
   var userLabel = document.querySelector("#label").value;
-  createShape(shape, userHeight, userWidth, userColor, userLabel);
+  createShape(shape, userLength, userWidth, userColor, userLabel);
 })
 
+//This is the new form created when the user changes the shape options from the dropdown menu
 document.querySelector("#shape-options").addEventListener("change", function(event){
   event.preventDefault();
   var shape = document.querySelector("#shape-options").value;
@@ -29,11 +96,42 @@ document.querySelector("#shape-options").addEventListener("change", function(eve
       
     document.querySelector("#create").addEventListener("click", function(event){
       event.preventDefault();
-      var userHeight = parseInt(document.querySelector("#height").value);
-      var userWidth = parseInt(document.querySelector("#width").value);
+
+      //Calculations for feet and inches
+      let widthFeet = parseInt(document.querySelector("#width").value) * 48;
+      let lengthFeet = parseInt(document.querySelector("#length").value) * 48;
+      let widthString = document.querySelector("#width").value;
+      let lengthString = document.querySelector("#length").value;
+      var widthArray = widthString.split("");
+      var lengthArray = lengthString.split("");
+      var widthInches = "";
+      var lengthInches = "";
+    
+      for(i = 0; i < widthArray.length; i++){
+        if(widthArray[i - 1] === "'" && numArray.indexOf(widthArray[i]) !== -1){
+          widthInches += widthArray[i];
+          if(numArray.indexOf(widthArray[i + 1]) !== -1){
+            widthInches += widthArray[i + 1];
+          }
+        }
+      }
+      widthInches = parseInt(widthInches) * 4;
+    
+      for(i = 0; i < lengthArray.length; i++){
+        if(lengthArray[i - 1] === "'" && numArray.indexOf(lengthArray[i]) !== -1){
+          lengthInches += lengthArray[i];
+          if(numArray.indexOf(lengthArray[i + 1]) !== -1){
+            lengthInches += lengthArray[i + 1];
+          }
+        }
+      }
+      lengthInches = parseInt(lengthInches) * 4;
+
+      var userLength = lengthFeet + lengthInches;
+      var userWidth = widthFeet + widthInches;
       var userColor = document.querySelector("#color").value;
       var userLabel = document.querySelector("#label").value;
-      createShape(shape, userHeight, userWidth, userColor, userLabel);
+      createShape(shape, userLength, userWidth, userColor, userLabel);
     });
   }
   else if(shape === "triangle"){
@@ -43,7 +141,24 @@ document.querySelector("#shape-options").addEventListener("change", function(eve
 
     document.querySelector("#create").addEventListener("click", function(event){
       event.preventDefault();
-      var userRadius = parseInt(document.querySelector("#radius").value);
+
+      //Calculations for feet and inches of the radius
+      let radiusFeet = parseInt(document.querySelector("#radius").value) * 48;
+      let radiusString = document.querySelector("#radius").value;
+      var radiusArray = radiusString.split("");
+      var radiusInches = "";
+    
+      for(i = 0; i < radiusArray.length; i++){
+        if(radiusArray[i - 1] === "'" && numArray.indexOf(radiusArray[i]) !== -1){
+          radiusInches += radiusArray[i];
+          if(numArray.indexOf(radiusArray[i + 1]) !== -1){
+            radiusInches += radiusArray[i + 1];
+          }
+        }
+      }
+      radiusInches = parseInt(radiusInches) * 4;
+
+      var userRadius = radiusFeet + radiusInches;
       var userColor = document.querySelector("#color").value;
       var userLabel = document.querySelector("#label").value;
       createPolygon(numSides, userRadius, userColor, userLabel);
@@ -56,7 +171,24 @@ document.querySelector("#shape-options").addEventListener("change", function(eve
 
     document.querySelector("#create").addEventListener("click", function(event){
       event.preventDefault();
-      var userRadius = parseInt(document.querySelector("#radius").value);
+
+      //Calculations for feet and inches of the radius
+      let radiusFeet = parseInt(document.querySelector("#radius").value) * 48;
+      let radiusString = document.querySelector("#radius").value;
+      var radiusArray = radiusString.split("");
+      var radiusInches = "";
+    
+      for(i = 0; i < radiusArray.length; i++){
+        if(radiusArray[i - 1] === "'" && numArray.indexOf(radiusArray[i]) !== -1){
+          radiusInches += radiusArray[i];
+          if(numArray.indexOf(radiusArray[i + 1]) !== -1){
+            radiusInches += radiusArray[i + 1];
+          }
+        }
+      }
+      radiusInches = parseInt(radiusInches) * 4;
+
+      var userRadius = radiusFeet + radiusInches;
       var userColor = document.querySelector("#color").value;
       var userLabel = document.querySelector("#label").value;
       createPolygon(numSides, userRadius, userColor, userLabel);
@@ -69,7 +201,24 @@ document.querySelector("#shape-options").addEventListener("change", function(eve
 
     document.querySelector("#create").addEventListener("click", function(event){
       event.preventDefault();
-      var userRadius = parseInt(document.querySelector("#radius").value);
+
+      //Calculations for feet and inches of the radius
+      let radiusFeet = parseInt(document.querySelector("#radius").value) * 48;
+      let radiusString = document.querySelector("#radius").value;
+      var radiusArray = radiusString.split("");
+      var radiusInches = "";
+    
+      for(i = 0; i < radiusArray.length; i++){
+        if(radiusArray[i - 1] === "'" && numArray.indexOf(radiusArray[i]) !== -1){
+          radiusInches += radiusArray[i];
+          if(numArray.indexOf(radiusArray[i + 1]) !== -1){
+            radiusInches += radiusArray[i + 1];
+          }
+        }
+      }
+      radiusInches = parseInt(radiusInches) * 4;
+
+      var userRadius = radiusFeet + radiusInches;
       var userColor = document.querySelector("#color").value;
       var userLabel = document.querySelector("#label").value;
       createPolygon(numSides, userRadius, userColor, userLabel);
@@ -77,6 +226,7 @@ document.querySelector("#shape-options").addEventListener("change", function(eve
   }
 })
 
+//Creates the form on the DOM when the user selects a certain shape from the dropdown menu
 function createForm(currentShape){
   var input = document.querySelector("#dimension-input");
   while(input.firstChild){
@@ -85,11 +235,11 @@ function createForm(currentShape){
 
   if(currentShape === "rectangle" || currentShape === "ellipse"){
 
-    var height = document.createElement("input");
-    height.setAttribute("type", "text");
-    height.setAttribute("id", "height");
-    height.setAttribute("placeholder", "Height");
-    input.appendChild(height);
+    var length = document.createElement("input");
+    length.setAttribute("type", "text");
+    length.setAttribute("id", "length");
+    length.setAttribute("placeholder", "Length");
+    input.appendChild(length);
 
     var width = document.createElement("input");
     width.setAttribute("type", "text");
@@ -143,7 +293,8 @@ function createForm(currentShape){
   }
 }
 
-function createShape(shape, userHeight, userWidth, userColor, userLabel){
+//Creates the shape(rectangle or ellipse) based on the users inputs on the form
+function createShape(shape, userLength, userWidth, userColor, userLabel){
   switch(shape){
 
     case "rectangle":
@@ -152,7 +303,7 @@ function createShape(shape, userHeight, userWidth, userColor, userLabel){
       dragDiv.innerHTML = userLabel;
       dragDiv.setAttribute("class", "draggable");
       dragDiv.setAttribute("id", "draggable-" + divCounter)
-      dragDiv.setAttribute("style", "height:" + (userHeight + 20) + "px; width:" + (userWidth + 40) + "px");
+      dragDiv.setAttribute("style", "height:" + (userLength + 20) + "px; width:" + (userWidth + 40) + "px");
       dragDiv.addEventListener("contextmenu", function(event){
         event.preventDefault();
         $(this).remove();
@@ -164,40 +315,43 @@ function createShape(shape, userHeight, userWidth, userColor, userLabel){
       var newCanvas = document.createElement("canvas");
       newCanvas.classList.add(newIllElement);
       newCanvas.setAttribute("width", (userWidth + 20));
-      newCanvas.setAttribute("height", (userHeight + 20));
+      newCanvas.setAttribute("height", (userLength + 20));
       document.querySelector("#draggable-" + divCounter).appendChild(newCanvas);
       divCounter++;
 
       var userShape = new Zdog.Illustration({
         element: "." + newIllElement,
         zoom: 1,
+        dragRotate: true
       });
 
       new Zdog.Rect({
         addTo: userShape,
         width: userWidth,
-        height: userHeight,
+        height: userLength,
         translate: {z: 10},
         color: userColor,
         fill: true
       });
 
       //Making the shape again and adding it to the list of items
-      var listCanvasElement = "canvas-child-" + divCounter;
       var listDiv = document.createElement("div");
-      listDiv.setAttribute("style", "height:" + (userHeight + 20) + "px; width:" + (userWidth + 40) + "px; text-align:center");
       listDiv.innerHTML = userLabel;
+      listDiv.setAttribute("id", "draggable-" + divCounter);
+      listDiv.setAttribute("style", "height:" + (userLength + 20) + "px; width:" + (userWidth + 40) + "px; text-align:center");
       listDiv.addEventListener("contextmenu", function(event){
         event.preventDefault();
         $(this).remove();
         return false;
       })
       document.querySelector("#item-list").appendChild(listDiv);
+      
+      var listCanvasElement = "canvas-child-" + divCounter;
       var newListCanvas = document.createElement("canvas");
       newListCanvas.classList.add(listCanvasElement);
       newListCanvas.setAttribute("width", (userWidth + 20));
-      newListCanvas.setAttribute("height", (userHeight));
-      listDiv.appendChild(newListCanvas);
+      newListCanvas.setAttribute("height", (userLength));
+      document.querySelector("#draggable-" + divCounter).appendChild(newListCanvas);
 
       var listIll = new Zdog.Illustration({
         element: "." + listCanvasElement,
@@ -208,19 +362,11 @@ function createShape(shape, userHeight, userWidth, userColor, userLabel){
       new Zdog.Rect({
         addTo: listIll,
         width: userWidth,
-        height: userHeight,
+        height: userLength,
         translate: {z: 10},
         color: userColor,
         fill: true
       });
-
-      listIll.updateRenderGraph();
-      
-      function animate() {
-        listIll.updateRenderGraph();
-        requestAnimationFrame( animate );
-      }
-      animate();
       break;
 
     case "ellipse":
@@ -229,7 +375,7 @@ function createShape(shape, userHeight, userWidth, userColor, userLabel){
       dragDiv.innerHTML = userLabel;
       dragDiv.setAttribute("class", "draggable");
       dragDiv.setAttribute("id", "draggable-" + divCounter)
-      dragDiv.setAttribute("style", "height:" + (userHeight + 5) + "px; width:" + (userWidth + 25) + "px");
+      dragDiv.setAttribute("style", "height:" + (userLength + 5) + "px; width:" + (userWidth + 25) + "px");
       dragDiv.addEventListener("contextmenu", function(event){
         event.preventDefault();
         $(this).remove();
@@ -241,40 +387,43 @@ function createShape(shape, userHeight, userWidth, userColor, userLabel){
       var newCanvas = document.createElement("canvas");
       newCanvas.classList.add(newIllElement);
       newCanvas.setAttribute("width", parseInt(userWidth + 5));
-      newCanvas.setAttribute("height", parseInt(userHeight + 5));
+      newCanvas.setAttribute("height", parseInt(userLength + 5));
       document.querySelector("#draggable-" + divCounter).appendChild(newCanvas);
       divCounter++;
 
       var userShape = new Zdog.Illustration({
         element: "." + newIllElement,
         zoom: 1,
+        dragRotate: true
       });
 
       new Zdog.Ellipse({
         addTo: userShape,
         width: userWidth,
-        height: userHeight,
+        height: userLength,
         translate: {z: 10},
         color: userColor,
         fill: true
       });
 
       //Making the shape again and adding it to the list of items
-      var listCanvasElement = "canvas-child-" + divCounter;
       var listDiv = document.createElement("div");
-      listDiv.setAttribute("style", "height:" + (userHeight + 25) + "px; width:" + (userWidth + 25) + "px; text-align:center");
       listDiv.innerHTML = userLabel;
+      listDiv.setAttribute("id", "draggable-" + divCounter);
+      listDiv.setAttribute("style", "height:" + (userLength + 25) + "px; width:" + (userWidth + 25) + "px; text-align:center");
       listDiv.addEventListener("contextmenu", function(event){
         event.preventDefault();
         $(this).remove();
         return false;
       })
       document.querySelector("#item-list").appendChild(listDiv);
+
+      var listCanvasElement = "canvas-child-" + divCounter;
       var newListCanvas = document.createElement("canvas");
       newListCanvas.classList.add(listCanvasElement);
       newListCanvas.setAttribute("width", (userWidth + 5));
-      newListCanvas.setAttribute("height", (userHeight + 5));
-      listDiv.appendChild(newListCanvas);
+      newListCanvas.setAttribute("height", (userLength + 5));
+      document.querySelector("#draggable-" + divCounter).appendChild(newListCanvas);
 
       var listIll = new Zdog.Illustration({
         element: "." + listCanvasElement,
@@ -285,25 +434,23 @@ function createShape(shape, userHeight, userWidth, userColor, userLabel){
       new Zdog.Ellipse({
         addTo: listIll,
         width: userWidth,
-        height: userHeight,
+        height: userLength,
         translate: {z: 10},
         color: userColor,
         fill: true
       });
-
-      listIll.updateRenderGraph();
-
-      function animate() {
-        userShape.updateRenderGraph();
-        requestAnimationFrame( animate );
-      }
-      animate();
       break;
   }
 
   divCounter++;
 
-  userShape.updateRenderGraph();
+  animate();
+      
+  function animate() {
+    listIll.updateRenderGraph();
+    userShape.updateRenderGraph();
+    requestAnimationFrame(animate);
+  }
 
   var dragClass = document.getElementsByClassName("draggable");
   for(var i = 0; i < dragClass.length; i++){
@@ -311,12 +458,13 @@ function createShape(shape, userHeight, userWidth, userColor, userLabel){
   }
 }
 
+//Creates the shape(triangle, pentagon, or hexagon) based on the users inputs on the form
 function createPolygon(numSides, userRadius, userColor, userLabel){
   var dragDiv = document.createElement("div");
   dragDiv.innerHTML = userLabel;
   dragDiv.setAttribute("class", "draggable");
   dragDiv.setAttribute("id", "draggable-" + divCounter)
-  dragDiv.setAttribute("style", "height:" + (userRadius + 70) + "px; width:" + (userRadius + 70) + "px");
+  dragDiv.setAttribute("style", "height:" + (userRadius + 200) + "px; width:" + (userRadius + 200) + "px");
   dragDiv.addEventListener("contextmenu", function(event){
     event.preventDefault();
     $(this).remove();
@@ -327,13 +475,15 @@ function createPolygon(numSides, userRadius, userColor, userLabel){
   var newIllElement = "canvas-child-" + divCounter;
   var newCanvas = document.createElement("canvas");
   newCanvas.classList.add(newIllElement);
-  newCanvas.setAttribute("width", parseInt(userRadius + 50));
-  newCanvas.setAttribute("height", parseInt(userRadius + 50));
+  newCanvas.setAttribute("width", parseInt(userRadius + 200));
+  newCanvas.setAttribute("height", parseInt(userRadius + 200));
   document.querySelector("#draggable-" + divCounter).appendChild(newCanvas);
+  divCounter++;
 
   var userShape = new Zdog.Illustration({
     element: "." + newIllElement,
     zoom: 1,
+    dragRotate: true
   });
 
   new Zdog.Polygon({
@@ -346,21 +496,23 @@ function createPolygon(numSides, userRadius, userColor, userLabel){
   });
 
   //Making the shape again and adding it to the list of items
-  var listCanvasElement = "canvas-child-" + divCounter;
   var listDiv = document.createElement("div");
-  listDiv.setAttribute("style", "height:" + (userRadius + 70) + "px; width:" + (userRadius + 70) + "px; text-align:center");
   listDiv.innerHTML = userLabel;
+  listDiv.setAttribute("id", "draggable-" + divCounter);
+  listDiv.setAttribute("style", "height:" + (userRadius + 200) + "px; width:" + (userRadius + 200) + "px; text-align:center");
   listDiv.addEventListener("contextmenu", function(event){
     event.preventDefault();
     $(this).remove();
     return false;
   })
   document.querySelector("#item-list").appendChild(listDiv);
+  
+  var listCanvasElement = "canvas-child-" + divCounter;
   var newListCanvas = document.createElement("canvas");
   newListCanvas.classList.add(listCanvasElement);
-  newListCanvas.setAttribute("width", (userRadius + 50));
-  newListCanvas.setAttribute("height", (userRadius + 50));
-  listDiv.appendChild(newListCanvas);
+  newListCanvas.setAttribute("width", (userRadius + 200));
+  newListCanvas.setAttribute("height", (userRadius + 200));
+  document.querySelector("#draggable-" + divCounter).appendChild(newListCanvas);
 
   var listIll = new Zdog.Illustration({
     element: "." + listCanvasElement,
@@ -377,17 +529,15 @@ function createPolygon(numSides, userRadius, userColor, userLabel){
     fill: true
   });
 
-  listIll.updateRenderGraph();
-
-  function animate() {
-    userShape.updateRenderGraph();
-    requestAnimationFrame( animate );
-  }
-  animate();
-
   divCounter++;
 
-  userShape.updateRenderGraph();
+  animate();
+  
+  function animate() {
+    listIll.updateRenderGraph();
+    userShape.updateRenderGraph();
+    requestAnimationFrame(animate);
+  }
 
   var dragClass = document.getElementsByClassName("draggable");
   for(var i = 0; i < dragClass.length; i++){
@@ -395,12 +545,8 @@ function createPolygon(numSides, userRadius, userColor, userLabel){
   }
 }
 
-function addItem(userItem){
-  var list = document.querySelector("#item-list");
-  var item;
-}
-
 //Code taken from https://www.w3schools.com/howto/howto_js_draggable.asp
+//Allows the user to drag their created items onto the floor plan
 function dragElement(elmnt) {
   var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
   if (document.querySelector("#draggable")) {
