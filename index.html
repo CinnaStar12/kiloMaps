@@ -21,22 +21,38 @@
         <option value="ellipse">
             Ellipse
         </option>
+        <option id="userTriangle" value="triangle">
+            Triangle
+        </option>
+        <option value="pentagon">
+            Pentagon
+        </option>
+        <option value="hexagon">
+            Hexagon
+        </option>
     </select>
     <br><br>
 
-    <form>
+    <form id="dimension-input">
         <input type="text" id="height" placeholder="Height">
         <input type="text" id="width" placeholder="Width">
         <input type="text" id="color" placeholder="Color">
+        <input type="text" id="label" placeholder="label">
         <input id="make-shape" type="submit" value="Create Object">
     </form>
     <br><br>
     
     <div id="user-canvas">
     </div>
-
-    <div id="shape-list">
+    
+    <div id="item-list">
+        List of Items:
     </div>
+    <br><br>
+    <div id="shape-list">
+        Your Draggable Item:
+    </div>
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="zdog.dist.js"></script>
