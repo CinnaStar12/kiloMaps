@@ -319,6 +319,10 @@ function createShape(shape, userLength, userWidth, userColor, userLabel){
       dragDiv.setAttribute("class", "draggable");
       dragDiv.setAttribute("id", "draggable-" + divCounter)
       dragDiv.setAttribute("style", "height:" + (userLength + 20) + "px; width:" + (userWidth + 40) + "px");
+      //Inserted some data labels to make the database storage simpler ~~~AB
+      dragDiv.setAttribute("data-label", userLabel);
+      dragDiv.setAttribute("data-color", userColor);
+      dragDiv.setAttribute("data-shape", "rectangle");
       dragDiv.addEventListener("contextmenu", function(event){
         event.preventDefault();
         $(this).remove();
@@ -396,6 +400,9 @@ function createShape(shape, userLength, userWidth, userColor, userLabel){
       dragDiv.setAttribute("class", "draggable");
       dragDiv.setAttribute("id", "draggable-" + divCounter)
       dragDiv.setAttribute("style", "height:" + (userLength + 5) + "px; width:" + (userWidth + 25) + "px");
+      //Inserted some data labels to make the database storage simpler ~~~AB
+      dragDiv.setAttribute("data-label", userLabel);
+      dragDiv.setAttribute("data-color", userColor);
       dragDiv.addEventListener("contextmenu", function(event){
         event.preventDefault();
         $(this).remove();
@@ -490,6 +497,10 @@ function createPolygon(numSides, userRadius, userColor, userLabel){
   dragDiv.innerHTML = userLabel;
   dragDiv.setAttribute("class", "draggable");
   dragDiv.setAttribute("id", "draggable-" + divCounter)
+  //Inserted some data labels to make the database storage simpler ~~~AB
+  dragDiv.setAttribute("data-label", userLabel);
+  dragDiv.setAttribute("data-color", userColor);
+  dragDiv.setAttribute("data-shape", "polygon");
   dragDiv.setAttribute("style", "height:" + (userRadius + 200) + "px; width:" + (userRadius + 200) + "px");
   dragDiv.addEventListener("contextmenu", function(event){
     event.preventDefault();
