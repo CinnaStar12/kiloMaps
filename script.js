@@ -1,7 +1,7 @@
 var divCounter = 0;
 var numArray = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
 
-//Creates the floor plan from the users inputs on the form
+//Creates the floor plan from the user's inputs on the form
 document.querySelector("#make-floor-plan").addEventListener("click", function(event){
     event.preventDefault();
 
@@ -307,7 +307,7 @@ function createForm(currentShape){
   }
 }
 
-//Creates the shape(rectangle or ellipse) based on the users inputs on the form
+//Creates the shape(rectangle or ellipse) based on the user's inputs on the form
 function createShape(shape, userLength, userWidth, userColor, userLabel){
   switch(shape){
 
@@ -318,7 +318,7 @@ function createShape(shape, userLength, userWidth, userColor, userLabel){
       dragDiv.innerHTML = userLabel;
       dragDiv.setAttribute("class", "draggable");
       dragDiv.setAttribute("id", "draggable-" + divCounter)
-      dragDiv.setAttribute("style", "height:" + (userLength + 20) + "px; width:" + (userWidth + 40) + "px");
+      dragDiv.setAttribute("style", "height:" + (userLength) + "px; width:" + (userWidth + 20) + "px");
       dragDiv.addEventListener("contextmenu", function(event){
         event.preventDefault();
         $(this).remove();
@@ -326,20 +326,37 @@ function createShape(shape, userLength, userWidth, userColor, userLabel){
       })
       document.querySelector("#shape-list").appendChild(dragDiv);
 
+      //This creates another div that lets the user rotate the shape 15 degrees by clicking on it
+      var rotateDiv = document.createElement("div");
+      rotateDiv.setAttribute("id", "rotate-" + divCounter)
+      rotateDiv.setAttribute("style", "height:" + (userLength + 20) + "px; width:" + (userWidth + 20) + "px; margin-top:10px");
+      document.querySelector("#draggable-" + divCounter).appendChild(rotateDiv);
+
+      var counter = 0;
+      $("#rotate-" + divCounter).on("click", function(){
+        if(counter !== 345){
+          counter += 15;
+          $(this).css("transform", "rotate(" + counter + "deg)");
+        }
+        else if(counter === 345){
+          counter = 0;
+          $(this).css("transform", "rotate(" + counter + "deg)");
+        }
+      })
+
       //Making the canvas which the created shape will be added to
       var newIllElement = "canvas-child-" + divCounter;
       var newCanvas = document.createElement("canvas");
       newCanvas.classList.add(newIllElement);
       newCanvas.setAttribute("width", (userWidth + 20));
       newCanvas.setAttribute("height", (userLength + 20));
-      document.querySelector("#draggable-" + divCounter).appendChild(newCanvas);
+      document.querySelector("#rotate-" + divCounter).appendChild(newCanvas);
       divCounter++;
 
       //Creates the Illustration class from the ZDog API
       var userShape = new Zdog.Illustration({
         element: "." + newIllElement,
         zoom: 1,
-        dragRotate: true
       });
 
       //Creates the shape from the ZDog API and adds it to our Illustration we created
@@ -356,26 +373,43 @@ function createShape(shape, userLength, userWidth, userColor, userLabel){
       var listDiv = document.createElement("div");
       listDiv.innerHTML = userLabel;
       listDiv.setAttribute("id", "draggable-" + divCounter);
-      listDiv.setAttribute("style", "height:" + (userLength + 20) + "px; width:" + (userWidth + 40) + "px; text-align:center");
+      listDiv.setAttribute("style", "height:" + (userLength + 40) + "px; width:" + (userWidth + 20) + "px; text-align:center");
       listDiv.addEventListener("contextmenu", function(event){
         event.preventDefault();
         $(this).remove();
         return false;
       })
       document.querySelector("#item-list").appendChild(listDiv);
+
+      //This creates another div that lets the user rotate the shape 15 degrees by clicking on it
+      var rotateDiv = document.createElement("div");
+      rotateDiv.setAttribute("id", "rotate-" + divCounter)
+      rotateDiv.setAttribute("style", "height:" + (userLength + 20) + "px; width:" + (userWidth + 20) + "px");
+      document.querySelector("#draggable-" + divCounter).appendChild(rotateDiv);
+
+      var listCounter = 0;
+      $("#rotate-" + divCounter).on("click", function(){
+        if(listCounter !== 345){
+          listCounter += 15;
+          $(this).css("transform", "rotate(" + listCounter + "deg)");
+        }
+        else if(listCounter === 345){
+          listCounter = 0;
+          $(this).css("transform", "rotate(" + listCounter + "deg)");
+        }
+      })
       
       //Making the canvas which the created shape will be added to
       var listCanvasElement = "canvas-child-" + divCounter;
       var newListCanvas = document.createElement("canvas");
       newListCanvas.classList.add(listCanvasElement);
       newListCanvas.setAttribute("width", (userWidth + 20));
-      newListCanvas.setAttribute("height", (userLength));
-      document.querySelector("#draggable-" + divCounter).appendChild(newListCanvas);
+      newListCanvas.setAttribute("height", (userLength + 20));
+      document.querySelector("#rotate-" + divCounter).appendChild(newListCanvas);
 
       var listIll = new Zdog.Illustration({
         element: "." + listCanvasElement,
         zoom: 1,
-        dragRotate: true
       });
 
       new Zdog.Rect({
@@ -395,7 +429,7 @@ function createShape(shape, userLength, userWidth, userColor, userLabel){
       dragDiv.innerHTML = userLabel;
       dragDiv.setAttribute("class", "draggable");
       dragDiv.setAttribute("id", "draggable-" + divCounter)
-      dragDiv.setAttribute("style", "height:" + (userLength + 5) + "px; width:" + (userWidth + 25) + "px");
+      dragDiv.setAttribute("style", "height:" + (userLength + 25) + "px; width:" + (userWidth + 25) + "px");
       dragDiv.addEventListener("contextmenu", function(event){
         event.preventDefault();
         $(this).remove();
@@ -403,19 +437,36 @@ function createShape(shape, userLength, userWidth, userColor, userLabel){
       })
       document.querySelector("#shape-list").appendChild(dragDiv);
 
+      //This creates another div that lets the user rotate the shape 15 degrees by clicking on it
+      var rotateDiv = document.createElement("div");
+      rotateDiv.setAttribute("id", "rotate-" + divCounter)
+      rotateDiv.setAttribute("style", "height:" + (userLength + 20) + "px; width:" + (userWidth + 20) + "px; margin-top:30px");
+      document.querySelector("#draggable-" + divCounter).appendChild(rotateDiv);
+
+      var counter = 0;
+      $("#rotate-" + divCounter).on("click", function(){
+        if(counter !== 345){
+          counter += 15;
+          $(this).css("transform", "rotate(" + counter + "deg)");
+        }
+        else if(counter === 345){
+          counter = 0;
+          $(this).css("transform", "rotate(" + counter + "deg)");
+        }
+      })
+
       //Making the canvas which the created shape will be added to
       var newIllElement = "canvas-child-" + divCounter;
       var newCanvas = document.createElement("canvas");
       newCanvas.classList.add(newIllElement);
       newCanvas.setAttribute("width", parseInt(userWidth + 5));
       newCanvas.setAttribute("height", parseInt(userLength + 5));
-      document.querySelector("#draggable-" + divCounter).appendChild(newCanvas);
+      document.querySelector("#rotate-" + divCounter).appendChild(newCanvas);
       divCounter++;
 
       var userShape = new Zdog.Illustration({
         element: "." + newIllElement,
         zoom: 1,
-        dragRotate: true
       });
 
       new Zdog.Ellipse({
@@ -431,7 +482,7 @@ function createShape(shape, userLength, userWidth, userColor, userLabel){
       var listDiv = document.createElement("div");
       listDiv.innerHTML = userLabel;
       listDiv.setAttribute("id", "draggable-" + divCounter);
-      listDiv.setAttribute("style", "height:" + (userLength + 25) + "px; width:" + (userWidth + 25) + "px; text-align:center");
+      listDiv.setAttribute("style", "height:" + (userLength + 55) + "px; width:" + (userWidth + 25) + "px; text-align:center");
       listDiv.addEventListener("contextmenu", function(event){
         event.preventDefault();
         $(this).remove();
@@ -439,18 +490,35 @@ function createShape(shape, userLength, userWidth, userColor, userLabel){
       })
       document.querySelector("#item-list").appendChild(listDiv);
 
+      //This creates another div that lets the user rotate the shape 15 degrees by clicking on it
+      var rotateDiv = document.createElement("div");
+      rotateDiv.setAttribute("id", "rotate-" + divCounter)
+      rotateDiv.setAttribute("style", "height:" + (userLength + 20) + "px; width:" + (userWidth + 20) + "px; margin-top:20px");
+      document.querySelector("#draggable-" + divCounter).appendChild(rotateDiv);
+
+      var listCounter = 0;
+      $("#rotate-" + divCounter).on("click", function(){
+        if(listCounter !== 345){
+          listCounter += 15;
+          $(this).css("transform", "rotate(" + listCounter + "deg)");
+        }
+        else if(listCounter === 345){
+          listCounter = 0;
+          $(this).css("transform", "rotate(" + listCounter + "deg)");
+        }
+      })
+
       //Making the canvas which the created shape will be added to
       var listCanvasElement = "canvas-child-" + divCounter;
       var newListCanvas = document.createElement("canvas");
       newListCanvas.classList.add(listCanvasElement);
       newListCanvas.setAttribute("width", (userWidth + 5));
       newListCanvas.setAttribute("height", (userLength + 5));
-      document.querySelector("#draggable-" + divCounter).appendChild(newListCanvas);
+      document.querySelector("#rotate-" + divCounter).appendChild(newListCanvas);
 
       var listIll = new Zdog.Illustration({
         element: "." + listCanvasElement,
         zoom: 1,
-        dragRotate: true
       });
 
       new Zdog.Ellipse({
@@ -466,14 +534,9 @@ function createShape(shape, userLength, userWidth, userColor, userLabel){
 
   divCounter++;
 
-  //The animate function allows the user to rotate the items created
-  animate();
-      
-  function animate() {
-    listIll.updateRenderGraph();
-    userShape.updateRenderGraph();
-    requestAnimationFrame(animate);
-  }
+  //Updates the illustrations to add the created shapes
+  listIll.updateRenderGraph();
+  userShape.updateRenderGraph();
 
   //The for-loop loops through the elements with the class of 'draggable' which allows for all elements to be able to be dragged
   var dragClass = document.getElementsByClassName("draggable");
@@ -482,7 +545,7 @@ function createShape(shape, userLength, userWidth, userColor, userLabel){
   }
 }
 
-//Creates the shape(triangle, pentagon, or hexagon) based on the users inputs on the form
+//Creates the shape(triangle, pentagon, or hexagon) based on the user's inputs on the form
 function createPolygon(numSides, userRadius, userColor, userLabel){
 
   //This is the div the canvas will append to and which the user will be able to drag from
@@ -490,7 +553,15 @@ function createPolygon(numSides, userRadius, userColor, userLabel){
   dragDiv.innerHTML = userLabel;
   dragDiv.setAttribute("class", "draggable");
   dragDiv.setAttribute("id", "draggable-" + divCounter)
-  dragDiv.setAttribute("style", "height:" + (userRadius + 200) + "px; width:" + (userRadius + 200) + "px");
+  if(userRadius <= 92){
+    dragDiv.setAttribute("style", "height:" + (userRadius + 100) + "px; width:" + (userRadius + 100) + "px");
+  }
+  else if(userRadius < 152){ //Any triangle more than 3'2" is too big for the canvas
+    dragDiv.setAttribute("style", "height:" + (userRadius + 150) + "px; width:" + (userRadius + 150) + "px");
+  }
+  else{
+    dragDiv.setAttribute("style", "height:" + (userRadius + 200) + "px; width:" + (userRadius + 200) + "px");
+  }
   dragDiv.addEventListener("contextmenu", function(event){
     event.preventDefault();
     $(this).remove();
@@ -498,19 +569,54 @@ function createPolygon(numSides, userRadius, userColor, userLabel){
   })
   document.querySelector("#shape-list").appendChild(dragDiv);
 
+  //This creates another div that lets the user rotate the shape 15 degrees by clicking on it
+  var rotateDiv = document.createElement("div");
+  rotateDiv.setAttribute("id", "rotate-" + divCounter)
+  if(userRadius <= 92){
+    rotateDiv.setAttribute("style", "height:" + (userRadius + 100) + "px; width:" + (userRadius + 100) + "px; margin-top:10px");
+  }
+  else if(userRadius < 152){
+    rotateDiv.setAttribute("style", "height:" + (userRadius + 150) + "px; width:" + (userRadius + 150) + "px; margin-top:10px");
+  }
+  else{
+    rotateDiv.setAttribute("style", "height:" + (userRadius + 200) + "px; width:" + (userRadius + 200) + "px; margin-top:10px");
+  }
+  document.querySelector("#draggable-" + divCounter).appendChild(rotateDiv);
+
+  var counter = 0;
+  $("#rotate-" + divCounter).on("click", function(){
+    if(counter !== 345){
+      counter += 15;
+      $(this).css("transform", "rotate(" + counter + "deg)");
+    }
+    else if(counter === 345){
+      counter = 0;
+      $(this).css("transform", "rotate(" + counter + "deg)");
+    }
+  })
+
   //Making the canvas which the created shape will be added to
   var newIllElement = "canvas-child-" + divCounter;
   var newCanvas = document.createElement("canvas");
   newCanvas.classList.add(newIllElement);
-  newCanvas.setAttribute("width", parseInt(userRadius + 200));
-  newCanvas.setAttribute("height", parseInt(userRadius + 200));
-  document.querySelector("#draggable-" + divCounter).appendChild(newCanvas);
+  if(userRadius <= 92){
+    newCanvas.setAttribute("width", parseInt(userRadius + 100));
+    newCanvas.setAttribute("height", parseInt(userRadius + 100));
+  }
+  else if(userRadius < 152){
+    newCanvas.setAttribute("width", parseInt(userRadius + 150));
+    newCanvas.setAttribute("height", parseInt(userRadius + 150));
+  }
+  else{
+    newCanvas.setAttribute("width", parseInt(userRadius + 200));
+    newCanvas.setAttribute("height", parseInt(userRadius + 200));
+  }
+  document.querySelector("#rotate-" + divCounter).appendChild(newCanvas);
   divCounter++;
 
   var userShape = new Zdog.Illustration({
     element: "." + newIllElement,
     zoom: 1,
-    dragRotate: true
   });
 
   new Zdog.Polygon({
@@ -526,26 +632,69 @@ function createPolygon(numSides, userRadius, userColor, userLabel){
   var listDiv = document.createElement("div");
   listDiv.innerHTML = userLabel;
   listDiv.setAttribute("id", "draggable-" + divCounter);
-  listDiv.setAttribute("style", "height:" + (userRadius + 200) + "px; width:" + (userRadius + 200) + "px; text-align:center");
+  if(userRadius <= 92){
+    listDiv.setAttribute("style", "height:" + (userRadius + 100) + "px; width:" + (userRadius + 100) + "px; text-align:center");
+  }
+  if(userRadius < 152){ //Any triangle more than 3'2" is too big for the canvas
+    listDiv.setAttribute("style", "height:" + (userRadius + 150) + "px; width:" + (userRadius + 150) + "px; text-align:center");
+  }
+  else{
+    listDiv.setAttribute("style", "height:" + (userRadius + 200) + "px; width:" + (userRadius + 200) + "px; text-align:center");
+  }
   listDiv.addEventListener("contextmenu", function(event){
     event.preventDefault();
     $(this).remove();
     return false;
   })
   document.querySelector("#item-list").appendChild(listDiv);
+
+  //This creates another div that lets the user rotate the shape 15 degrees by clicking on it
+  var rotateDiv = document.createElement("div");
+  rotateDiv.setAttribute("id", "rotate-" + divCounter)
+  if(userRadius <= 92){
+    rotateDiv.setAttribute("style", "height:" + (userRadius + 100) + "px; width:" + (userRadius + 100) + "px; margin-top:10px; margin-bottom:20px");
+  }
+  else if(userRadius < 152){
+    rotateDiv.setAttribute("style", "height:" + (userRadius + 150) + "px; width:" + (userRadius + 150) + "px; margin-top:10px; margin-bottom:20px");
+  }
+  else{
+    rotateDiv.setAttribute("style", "height:" + (userRadius + 200) + "px; width:" + (userRadius + 200) + "px; margin-top:10px; margin-bottom:20px");
+  }
+  document.querySelector("#draggable-" + divCounter).appendChild(rotateDiv);
+
+  var listCounter = 0;
+  $("#rotate-" + divCounter).on("click", function(){
+    if(listCounter !== 345){
+      listCounter += 15;
+      $(this).css("transform", "rotate(" + listCounter + "deg)");
+    }
+    else if(listCounter === 345){
+      listCounter = 0;
+      $(this).css("transform", "rotate(" + listCounter + "deg)");
+    }
+  })
   
   //Making the canvas which the created shape will be added to
   var listCanvasElement = "canvas-child-" + divCounter;
   var newListCanvas = document.createElement("canvas");
   newListCanvas.classList.add(listCanvasElement);
-  newListCanvas.setAttribute("width", (userRadius + 200));
-  newListCanvas.setAttribute("height", (userRadius + 200));
-  document.querySelector("#draggable-" + divCounter).appendChild(newListCanvas);
+  if(userRadius <= 92){
+    newListCanvas.setAttribute("width", parseInt(userRadius + 100));
+    newListCanvas.setAttribute("height", parseInt(userRadius + 100));
+  }
+  else if(userRadius < 152){
+    newListCanvas.setAttribute("width", parseInt(userRadius + 150));
+    newListCanvas.setAttribute("height", parseInt(userRadius + 150));
+  }
+  else{
+    newListCanvas.setAttribute("width", parseInt(userRadius + 200));
+    newListCanvas.setAttribute("height", parseInt(userRadius + 200));
+  }
+  document.querySelector("#rotate-" + divCounter).appendChild(newListCanvas);
 
   var listIll = new Zdog.Illustration({
     element: "." + listCanvasElement,
     zoom: 1,
-    dragRotate: true
   });
 
   new Zdog.Polygon({
@@ -559,13 +708,8 @@ function createPolygon(numSides, userRadius, userColor, userLabel){
 
   divCounter++;
 
-  animate();
-  
-  function animate() {
-    listIll.updateRenderGraph();
-    userShape.updateRenderGraph();
-    requestAnimationFrame(animate);
-  }
+  listIll.updateRenderGraph();
+  userShape.updateRenderGraph();
 
   var dragClass = document.getElementsByClassName("draggable");
   for(var i = 0; i < dragClass.length; i++){
