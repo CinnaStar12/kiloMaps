@@ -37,6 +37,7 @@ document.querySelector("#make-floor-plan").addEventListener("click", function(ev
 
     console.log(widthFeet + widthInches, heightFeet + heightInches)
 
+    //Creates the floor plan on the DOM based on calculated inputs from user
     let newCanvas = document.createElement("canvas");
     newCanvas.classList.add("zdog-canvas");
     newCanvas.setAttribute("width", widthFeet + widthInches);
@@ -78,6 +79,7 @@ document.querySelector("#make-shape").addEventListener("click", function(event){
   }
   lengthInches = parseInt(lengthInches) * 4;
 
+  //Creates the rectangle if the user did not change the shape from the dropdown menu
   var shape = document.querySelector("#shape-options").value;
   var userLength = lengthFeet + lengthInches;
   var userWidth = widthFeet + widthInches;
@@ -89,6 +91,8 @@ document.querySelector("#make-shape").addEventListener("click", function(event){
 //This is the new form created when the user changes the shape options from the dropdown menu
 document.querySelector("#shape-options").addEventListener("change", function(event){
   event.preventDefault();
+
+  //Stores the value chosen into the 'shape' variable
   var shape = document.querySelector("#shape-options").value;
 
   if(shape === "rectangle" || shape === "ellipse"){
@@ -127,6 +131,7 @@ document.querySelector("#shape-options").addEventListener("change", function(eve
       }
       lengthInches = parseInt(lengthInches) * 4;
 
+      //Stores the calculated inputs and calls the createShape function
       var userLength = lengthFeet + lengthInches;
       var userWidth = widthFeet + widthInches;
       var userColor = document.querySelector("#color").value;
@@ -158,6 +163,7 @@ document.querySelector("#shape-options").addEventListener("change", function(eve
       }
       radiusInches = parseInt(radiusInches) * 4;
 
+      //Calls the createPolygon function with the calculated inputs
       var userRadius = radiusFeet + radiusInches;
       var userColor = document.querySelector("#color").value;
       var userLabel = document.querySelector("#label").value;
@@ -188,6 +194,7 @@ document.querySelector("#shape-options").addEventListener("change", function(eve
       }
       radiusInches = parseInt(radiusInches) * 4;
 
+      //Calls the createPolygon function with the calculated inputs
       var userRadius = radiusFeet + radiusInches;
       var userColor = document.querySelector("#color").value;
       var userLabel = document.querySelector("#label").value;
@@ -218,6 +225,7 @@ document.querySelector("#shape-options").addEventListener("change", function(eve
       }
       radiusInches = parseInt(radiusInches) * 4;
 
+      //Calls the createPolygon function with the calculated inputs
       var userRadius = radiusFeet + radiusInches;
       var userColor = document.querySelector("#color").value;
       var userLabel = document.querySelector("#label").value;
@@ -229,10 +237,13 @@ document.querySelector("#shape-options").addEventListener("change", function(eve
 //Creates the form on the DOM when the user selects a certain shape from the dropdown menu
 function createForm(currentShape){
   var input = document.querySelector("#dimension-input");
+
+  //Removes the previous form from the input div
   while(input.firstChild){
     input.removeChild(input.firstChild);
   }
 
+  //Adds the form if shape chosen is rectangle or ellipse
   if(currentShape === "rectangle" || currentShape === "ellipse"){
 
     var length = document.createElement("input");
@@ -265,6 +276,9 @@ function createForm(currentShape){
     create.setAttribute("value", "Create Object");
     input.appendChild(create);
   }
+
+  //Adds a different form for triangle, pentagon, and hexagon
+  //Instead of length and width, we ask for radius
   else if(currentShape === "triangle" || currentShape === "pentagon" || currentShape === "hexagon"){
 
     var radius = document.createElement("input");
@@ -299,6 +313,7 @@ function createShape(shape, userLength, userWidth, userColor, userLabel){
 
     case "rectangle":
 
+      //This is the div the canvas will append to and which the user will be able to drag from
       var dragDiv = document.createElement("div");
       dragDiv.innerHTML = userLabel;
       dragDiv.setAttribute("class", "draggable");
@@ -311,6 +326,7 @@ function createShape(shape, userLength, userWidth, userColor, userLabel){
       })
       document.querySelector("#shape-list").appendChild(dragDiv);
 
+      //Making the canvas which the created shape will be added to
       var newIllElement = "canvas-child-" + divCounter;
       var newCanvas = document.createElement("canvas");
       newCanvas.classList.add(newIllElement);
@@ -319,12 +335,14 @@ function createShape(shape, userLength, userWidth, userColor, userLabel){
       document.querySelector("#draggable-" + divCounter).appendChild(newCanvas);
       divCounter++;
 
+      //Creates the Illustration class from the ZDog API
       var userShape = new Zdog.Illustration({
         element: "." + newIllElement,
         zoom: 1,
         dragRotate: true
       });
 
+      //Creates the shape from the ZDog API and adds it to our Illustration we created
       new Zdog.Rect({
         addTo: userShape,
         width: userWidth,
@@ -334,7 +352,7 @@ function createShape(shape, userLength, userWidth, userColor, userLabel){
         fill: true
       });
 
-      //Making the shape again and adding it to the list of items
+      //Making the div again that will be added to the item-list div
       var listDiv = document.createElement("div");
       listDiv.innerHTML = userLabel;
       listDiv.setAttribute("id", "draggable-" + divCounter);
@@ -346,6 +364,7 @@ function createShape(shape, userLength, userWidth, userColor, userLabel){
       })
       document.querySelector("#item-list").appendChild(listDiv);
       
+      //Making the canvas which the created shape will be added to
       var listCanvasElement = "canvas-child-" + divCounter;
       var newListCanvas = document.createElement("canvas");
       newListCanvas.classList.add(listCanvasElement);
@@ -371,6 +390,7 @@ function createShape(shape, userLength, userWidth, userColor, userLabel){
 
     case "ellipse":
 
+      //This is the div the canvas will append to and which the user will be able to drag from
       var dragDiv = document.createElement("div");
       dragDiv.innerHTML = userLabel;
       dragDiv.setAttribute("class", "draggable");
@@ -383,6 +403,7 @@ function createShape(shape, userLength, userWidth, userColor, userLabel){
       })
       document.querySelector("#shape-list").appendChild(dragDiv);
 
+      //Making the canvas which the created shape will be added to
       var newIllElement = "canvas-child-" + divCounter;
       var newCanvas = document.createElement("canvas");
       newCanvas.classList.add(newIllElement);
@@ -406,7 +427,7 @@ function createShape(shape, userLength, userWidth, userColor, userLabel){
         fill: true
       });
 
-      //Making the shape again and adding it to the list of items
+      //Making the div again that will be added to the item-list div
       var listDiv = document.createElement("div");
       listDiv.innerHTML = userLabel;
       listDiv.setAttribute("id", "draggable-" + divCounter);
@@ -418,6 +439,7 @@ function createShape(shape, userLength, userWidth, userColor, userLabel){
       })
       document.querySelector("#item-list").appendChild(listDiv);
 
+      //Making the canvas which the created shape will be added to
       var listCanvasElement = "canvas-child-" + divCounter;
       var newListCanvas = document.createElement("canvas");
       newListCanvas.classList.add(listCanvasElement);
@@ -444,6 +466,7 @@ function createShape(shape, userLength, userWidth, userColor, userLabel){
 
   divCounter++;
 
+  //The animate function allows the user to rotate the items created
   animate();
       
   function animate() {
@@ -452,6 +475,7 @@ function createShape(shape, userLength, userWidth, userColor, userLabel){
     requestAnimationFrame(animate);
   }
 
+  //The for-loop loops through the elements with the class of 'draggable' which allows for all elements to be able to be dragged
   var dragClass = document.getElementsByClassName("draggable");
   for(var i = 0; i < dragClass.length; i++){
     dragElement(dragClass[i]);
@@ -460,6 +484,8 @@ function createShape(shape, userLength, userWidth, userColor, userLabel){
 
 //Creates the shape(triangle, pentagon, or hexagon) based on the users inputs on the form
 function createPolygon(numSides, userRadius, userColor, userLabel){
+
+  //This is the div the canvas will append to and which the user will be able to drag from
   var dragDiv = document.createElement("div");
   dragDiv.innerHTML = userLabel;
   dragDiv.setAttribute("class", "draggable");
@@ -472,6 +498,7 @@ function createPolygon(numSides, userRadius, userColor, userLabel){
   })
   document.querySelector("#shape-list").appendChild(dragDiv);
 
+  //Making the canvas which the created shape will be added to
   var newIllElement = "canvas-child-" + divCounter;
   var newCanvas = document.createElement("canvas");
   newCanvas.classList.add(newIllElement);
@@ -495,7 +522,7 @@ function createPolygon(numSides, userRadius, userColor, userLabel){
     fill: true
   });
 
-  //Making the shape again and adding it to the list of items
+  //Making the div again that will be added to the item-list div
   var listDiv = document.createElement("div");
   listDiv.innerHTML = userLabel;
   listDiv.setAttribute("id", "draggable-" + divCounter);
@@ -507,6 +534,7 @@ function createPolygon(numSides, userRadius, userColor, userLabel){
   })
   document.querySelector("#item-list").appendChild(listDiv);
   
+  //Making the canvas which the created shape will be added to
   var listCanvasElement = "canvas-child-" + divCounter;
   var newListCanvas = document.createElement("canvas");
   newListCanvas.classList.add(listCanvasElement);
