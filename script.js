@@ -403,6 +403,7 @@ function createShape(shape, userLength, userWidth, userColor, userLabel){
       //Inserted some data labels to make the database storage simpler ~~~AB
       dragDiv.setAttribute("data-label", userLabel);
       dragDiv.setAttribute("data-color", userColor);
+      dragDiv.setAttribute("data-shape", "ellipse");
       dragDiv.addEventListener("contextmenu", function(event){
         event.preventDefault();
         $(this).remove();
