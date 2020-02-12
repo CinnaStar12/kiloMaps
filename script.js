@@ -578,7 +578,7 @@ function createPolygon(numSides, userRadius, userColor, userLabel){
   }
   else{
     dragDiv.setAttribute("style", "height:" + (userRadius + 200) + "px; width:" + (userRadius + 200) + "px");
- 
+  }
   dragDiv.addEventListener("contextmenu", function(event){
     event.preventDefault();
     $(this).remove();
