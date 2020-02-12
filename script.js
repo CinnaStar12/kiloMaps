@@ -48,14 +48,6 @@ document.querySelector("#make-floor-plan").addEventListener("click", function(ev
 
       console.log(widthFeet + widthInches, heightFeet + heightInches)
 
-<<<<<<< HEAD
-    //Creates the floor plan on the DOM based on calculated inputs from user
-    let newCanvas = document.createElement("canvas");
-    newCanvas.classList.add("zdog-canvas"); //CLASS FOR THE MAIN FLOOR PLAN BODY
-    newCanvas.setAttribute("width", widthFeet + widthInches);
-    newCanvas.setAttribute("height", heightFeet + heightInches);
-    document.querySelector("#user-canvas").appendChild(newCanvas);
-=======
       //Creates the floor plan on the DOM based on calculated inputs from user
       let newCanvas = document.createElement("canvas");
       newCanvas.classList.add("zdog-canvas");
@@ -63,7 +55,6 @@ document.querySelector("#make-floor-plan").addEventListener("click", function(ev
       newCanvas.setAttribute("height", heightFeet + heightInches);
       document.querySelector("#user-canvas").appendChild(newCanvas);
     }
->>>>>>> origin/master
 })
 
 //This event listener is only for the initial html web page we loaded
