@@ -6,3 +6,105 @@
     position: absolute;
     text-align: center;
 }
+
+
+
+
+
+/* KIKI'S ATTEMPT TO STYLE BETTER */
+
+/* Setting the spacing/centering of layers */
+html,
+body{ 
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 30px;
+}
+/*MADE THE BODY INTO 2 BOXES.
+ONE INPUT THE FLOOR PLAN SIZE AND
+THE OTHER WILL HOLD ALL THE OTHER
+OPTIONS IN A ROW FORMAT */
+body{
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    min-width: 100px;
+    min-height: 100px;
+    text-align: center;
+}
+/*OPTIONS TO SIZE FLOORPLAN COMES FIRST*/
+#room-size{
+    order: 1;
+    flex: 1;
+}
+/*GOING TO PUT SHAPE OPTIONS ON LEFT
+AND FLOORPLAN ON RIGHT. DRAGGABLE
+SHAPE WILL APPEAR BELOW SHAPE OPTIONS.*/
+#responsive-box{
+    order: 2;
+    flex: 1;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+/*ITEM LSIT WILL GO RIGHT BELOW THE FLOORPLAN BOX*/
+#item-list{
+   order: 3;
+   flex: 1;
+}
+
+
+
+
+
+/*----------NOW INSIDE THE RESPONSIVE BOX!!!!!!!!!!!!*/
+/*LETS DO LEFT-BOX FIRST*/
+#left-box{
+    order: 1;
+    flex: 1;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+#shape-options{
+    order: 1;
+    flex: 1;
+    /*NEED TO FIX THE SIZE OF THIS DROPDOWN MENU*/
+}
+#dimension-input{
+    order: 2;
+    flex: 1;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}/*MAKE THE INPUTS IN COLUMN FORMAT*/
+
+#shape-list{
+   order: 3;
+   flex: 1;
+}
+
+/*THIS CANVAS IS THE AREA OF THE FLOORPLAN SIZE*/
+/*THIS IS TECHNICALLY THE RIGHT-BOX, BUT NO NEED FOR AN EXTRA DIV*/
+#user-canvas{
+order: 2;
+flex: 3;
+}
+
+
+
+
+
+
+
+
+
+
+
+
