@@ -13,7 +13,7 @@
 
 /* KIKI'S ATTEMPT TO STYLE BETTER */
 
-/* Setting the spacing/centering of each box layer */
+/* Setting the spacing/centering of layers */
 html,
 body{ 
     width: 100%;
@@ -39,14 +39,13 @@ body{
 #room-size{
     order: 1;
     flex: 1;
-
 }
 /*GOING TO PUT SHAPE OPTIONS ON LEFT
 AND FLOORPLAN ON RIGHT. DRAGGABLE
 SHAPE WILL APPEAR BELOW SHAPE OPTIONS.*/
 #responsive-box{
     order: 2;
-    flex: 4;
+    flex: 1;
     display: -ms-flexbox;
     display: flex;
     justify-content: center;
@@ -63,8 +62,8 @@ SHAPE WILL APPEAR BELOW SHAPE OPTIONS.*/
 
 
 /*----------NOW INSIDE THE RESPONSIVE BOX!!!!!!!!!!!!*/
-
-#shape-options{
+/*LETS DO LEFT-BOX FIRST*/
+#left-box{
     order: 1;
     flex: 1;
     display: -ms-flexbox;
@@ -72,53 +71,40 @@ SHAPE WILL APPEAR BELOW SHAPE OPTIONS.*/
     justify-content: center;
     flex-direction: column;
 }
-/*AND INSIDE THE #SHAPE-OPTIONS*/
-#rectangle{
+#shape-options{
     order: 1;
     flex: 1;
+    /*NEED TO FIX THE SIZE OF THIS DROPDOWN MENU*/
 }
-#ellipse{
-    order: 2;
-    flex: 1;
-}
-#triangle{
-    order: 3;
-    flex: 1;
-}
-#pentagon{
-    order: 4;
-    flex: 1;
-}
-#hexagon{
-    order: 5;
-    flex: 1;
-}/*END OF DROPDOWN BAR INSIDE OF SHAPE-OPTIONS*/
-
-
-/*THIS CANVAS IS THE AREA OF THE FLOORPLAN SIZE*/
-.zdog-canvas{
-    order: 2;
-    flex: 3;
-
-}
-
-
-
-
-
 #dimension-input{
-   
-
-}
-
-#user-canvas{
-   
-}
-
-
+    order: 2;
+    flex: 1;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}/*MAKE THE INPUTS IN COLUMN FORMAT*/
 
 #shape-list{
-   
+   order: 3;
+   flex: 1;
 }
+
+/*THIS CANVAS IS THE AREA OF THE FLOORPLAN SIZE*/
+/*THIS IS TECHNICALLY THE RIGHT-BOX, BUT NO NEED FOR AN EXTRA DIV*/
+#user-canvas{
+order: 2;
+flex: 3;
+}
+
+
+
+
+
+
+
+
+
+
 
 
