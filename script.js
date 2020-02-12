@@ -55,6 +55,7 @@ document.querySelector("#make-floor-plan").addEventListener("click", function(ev
     newCanvas.setAttribute("width", widthFeet + widthInches);
     newCanvas.setAttribute("height", heightFeet + heightInches);
     document.querySelector("#user-canvas").appendChild(newCanvas);
+}
 })
 
 //This event listener is only for the initial html web page we loaded
