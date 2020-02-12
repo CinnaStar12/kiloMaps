@@ -1,0 +1,8 @@
+.zdog-canvas{
+    background: #FDB;
+}
+
+.draggable{
+    position: absolute;
+    text-align: center;
+}

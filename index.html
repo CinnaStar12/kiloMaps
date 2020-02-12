@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>kiloMaps</title>
+</head>
+<body>
+    <form>
+        Create your floor plan here. Format: 12'10" 10'7" etc. 1 foot = 48 pixels, 1 inch = 4 pixels
+        <br><br>
+        <input type="text" id="canvas-height" placeholder="Length of Floor">
+        <input type="text" id="canvas-width" placeholder="Width of Floor">
+        <input id="make-floor-plan" type="submit" value="Create Floor Plan">
+    </form>
+    <br><br>
+
+    <select id="shape-options">
+        <option value="rectangle">
+            Rectangle
+        </option>
+        <option value="ellipse">
+            Ellipse
+        </option>
+        <option value="triangle">
+            Triangle
+        </option>
+        <option value="pentagon">
+            Pentagon
+        </option>
+        <option value="hexagon">
+            Hexagon
+        </option>
+    </select>
+    <br><br>
+
+    <form id="dimension-input">
+        <input type="text" id="length" placeholder="Length">
+        <input type="text" id="width" placeholder="Width">
+        <input type="text" id="color" placeholder="Color">
+        <input type="text" id="label" placeholder="label">
+        <input id="make-shape" type="submit" value="Create Object">
+    </form>
+    <br><br>
+    
+    <div id="user-canvas">
+    </div>
+    
+    <div id="item-list">
+        List of Items:
+    </div>
+    <br><br>
+    <div id="shape-list">
+        Drag from the Label
+        <br><br>
+        Your Draggable Item:
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-firestore.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="zdog.dist.js"></script>
+    <script src="script.js"></script>
+    <script src="firebase.js"></script>
+</body>
+</html>
