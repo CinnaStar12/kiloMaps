@@ -39,7 +39,7 @@ document.querySelector("#make-floor-plan").addEventListener("click", function(ev
 
     //Creates the floor plan on the DOM based on calculated inputs from user
     let newCanvas = document.createElement("canvas");
-    newCanvas.classList.add("zdog-canvas");
+    newCanvas.classList.add("zdog-canvas"); //CLASS FOR THE MAIN FLOOR PLAN BODY
     newCanvas.setAttribute("width", widthFeet + widthInches);
     newCanvas.setAttribute("height", heightFeet + heightInches);
     document.querySelector("#user-canvas").appendChild(newCanvas);

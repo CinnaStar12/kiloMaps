@@ -21,7 +21,10 @@ body{
     margin: 0px;
     padding: 30px;
 }
-
+/*MADE THE BODY INTO 2 BOXES.
+ONE INPUT THE FLOOR PLAN SIZE AND
+THE OTHER WILL HOLD ALL THE OTHER
+OPTIONS IN A ROW FORMAT */
 body{
     display: -ms-flexbox;
     display: flex;
@@ -32,42 +35,90 @@ body{
     min-height: 100px;
     text-align: center;
 }
-
-.room-size{
+/*OPTIONS TO SIZE FLOORPLAN COMES FIRST*/
+#room-size{
     order: 1;
     flex: 1;
 
 }
+/*GOING TO PUT SHAPE OPTIONS ON LEFT
+AND FLOORPLAN ON RIGHT. DRAGGABLE
+SHAPE WILL APPEAR BELOW SHAPE OPTIONS.*/
+#responsive-box{
+    order: 2;
+    flex: 4;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+/*ITEM LSIT WILL GO RIGHT BELOW THE FLOORPLAN BOX*/
+#item-list{
+   order: 3;
+   flex: 1;
+}
 
-.shape-options{
+
+
+
+
+/*----------NOW INSIDE THE RESPONSIVE BOX!!!!!!!!!!!!*/
+
+#shape-options{
+    order: 1;
+    flex: 1;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+/*AND INSIDE THE #SHAPE-OPTIONS*/
+#rectangle{
+    order: 1;
+    flex: 1;
+}
+#ellipse{
     order: 2;
     flex: 1;
-
 }
-
-.dimension-input{
+#triangle{
     order: 3;
     flex: 1;
-
-
 }
-
-.user-canvas{
+#pentagon{
     order: 4;
     flex: 1;
-
 }
-
-.item-list{
+#hexagon{
     order: 5;
     flex: 1;
+}/*END OF DROPDOWN BAR INSIDE OF SHAPE-OPTIONS*/
+
+
+/*THIS CANVAS IS THE AREA OF THE FLOORPLAN SIZE*/
+.zdog-canvas{
+    order: 2;
+    flex: 3;
 
 }
 
-.shape-list{
-    order: 6;
-    flex: 1;
 
+
+
+
+#dimension-input{
+   
+
+}
+
+#user-canvas{
+   
+}
+
+
+
+#shape-list{
+   
 }
 
 
