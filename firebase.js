@@ -1,5 +1,5 @@
   // Initialize Firebase
-  firebase.initializeApp(firebas);
+  firebase.initializeApp(firebaseConfig);
 
   var db = firebase.firestore();
 
