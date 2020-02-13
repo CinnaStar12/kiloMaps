@@ -22,8 +22,7 @@
 
     <div id="responsive-box">
         <div id="left-box">
-            <input type="text" id="floor-plan-name" placeholder="Enter Name of Room">
-            <input id="save-floor-plan" type="submit" value="Save Floor Plan">
+            <input id="save-floor-modal" type="submit" value="Save Floor Plan">
             <select id="shape-options">
                 <option id="rectangle" value="rectangle">
                     Rectangle
@@ -69,6 +68,22 @@
     <div id="item-list">
         List of Items:
     </div>
+    <div class="modal" id="save-modal">
+        <div class="modal-background"></div>
+        <div class="modal-content">
+            <div class="modal-content-header">
+                <p class="modal-card-title">Save Room</p>
+            </div>
+            <div class="modal-contant-body">
+                <label for="floor-plan-name">Enter Name of Room</label>
+                <input id ="floor-plan-name" class="input" type="text" placeholder="Name of Room.....">
+            </div>
+            <div class="modal-content-foot">
+                <button class="button is-success" id="save-floor-plan">Save Room</button>
+            </div>
+        </div>
+        <button class="modal-close is-large" aria-label="close"></button>
+      </div>
         
         
 
