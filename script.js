@@ -8,56 +8,6 @@ document.querySelector("#make-floor-plan").addEventListener("click", function (e
   let heightInput = document.querySelector("#canvas-height").value.trim();
   
   createRoom(widthInput, heightInput);
-  //------Can We Make this part into a function on its own?~~~AB
-  //   //Returns if any of the inputs are empty
-  //   if(widthInput === "" || heightInput === ""){
-  //     return;
-  //   }
-  //   else{
-  //     while(document.querySelector("#user-canvas").firstChild){
-  //       document.querySelector("#user-canvas").removeChild(document.querySelector("#user-canvas").firstChild);
-  //     }
-
-  //     //For scaling, 1 foot = 48 pixels and 1 inch = 4 pixels
-  //     let widthFeet = parseInt(document.querySelector("#canvas-width").value) * 48;
-  //     let heightFeet = parseInt(document.querySelector("#canvas-height").value) * 48;
-  //     let widthString = document.querySelector("#canvas-width").value;
-  //     let heightString = document.querySelector("#canvas-height").value;
-  //     var widthArray = widthString.split("");
-  //     var heightArray = heightString.split("");
-  //     var widthInches = "";
-  //     var heightInches = "";
-
-  //     for(i = 0; i < widthArray.length; i++){
-  //       if(widthArray[i - 1] === "'" && numArray.indexOf(widthArray[i]) !== -1){
-  //         widthInches += widthArray[i];
-  //         if(numArray.indexOf(widthArray[i + 1]) !== -1){
-  //           widthInches += widthArray[i + 1];
-  //         }
-  //       }
-  //     }
-  //     widthInches = parseInt(widthInches) * 4;
-
-  //     for(i = 0; i < heightArray.length; i++){
-  //       if(heightArray[i - 1] === "'" && numArray.indexOf(heightArray[i]) !== -1){
-  //         heightInches += heightArray[i];
-  //         if(numArray.indexOf(heightArray[i + 1]) !== -1){
-  //           heightInches += heightArray[i + 1];
-  //         }
-  //       }
-  //     }
-  //     heightInches = parseInt(heightInches) * 4;
-
-  //     console.log(widthFeet + widthInches, heightFeet + heightInches)
-
-
-  //   //Creates the floor plan on the DOM based on calculated inputs from user
-  //   let newCanvas = document.createElement("canvas");
-  //   newCanvas.classList.add("zdog-canvas"); //CLASS FOR THE MAIN FLOOR PLAN BODY
-  //   newCanvas.setAttribute("width", widthFeet + widthInches);
-  //   newCanvas.setAttribute("height", heightFeet + heightInches);
-  //   document.querySelector("#user-canvas").appendChild(newCanvas);
-  // }
 })
 
 //This event listener is only for the initial html web page we loaded
@@ -770,56 +720,62 @@ function createPolygon(numSides, userRadius, userColor, userLabel, userItemLabel
 }
 
 function createRoom(widthInput, heightInput) {
-  if (widthInput === "" || heightInput === "") {
-    return;
-  }
-  else {
-    while (document.querySelector("#user-canvas").firstChild) {
-      document.querySelector("#user-canvas").removeChild(document.querySelector("#user-canvas").firstChild);
+    if(widthInput === "" || heightInput === ""){
+      return;
     }
+    else{
+      while(document.querySelector("#user-canvas").firstChild){
+        document.querySelector("#user-canvas").removeChild(document.querySelector("#user-canvas").firstChild);
+      }
 
-    //For scaling, 1 foot = 48 pixels and 1 inch = 4 pixels
-    let widthFeet = parseInt(document.querySelector("#canvas-width").value) * 48;
-    let heightFeet = parseInt(document.querySelector("#canvas-height").value) * 48;
-    let widthString = document.querySelector("#canvas-width").value;
-    let heightString = document.querySelector("#canvas-height").value;
-    var widthArray = widthString.split("");
-    var heightArray = heightString.split("");
-    var widthInches = "";
-    var heightInches = "";
+      //For scaling, 1 foot = 48 pixels and 1 inch = 4 pixels
+      let widthFeet = parseInt(document.querySelector("#canvas-width").value.trim()) * 48;
+      let heightFeet = parseInt(document.querySelector("#canvas-height").value.trim()) * 48;
+      let widthString = document.querySelector("#canvas-width").value.trim();
+      let heightString = document.querySelector("#canvas-height").value.trim();
+      var widthArraySpace = widthString.split(" ");
+      var heightArraySpace = heightString.split(" ");
+      var widthJoin = widthArraySpace.join();
+      var heightJoin = heightArraySpace.join();
+      var widthArray = widthJoin.split("");
+      var heightArray = heightJoin.split("");
+      var widthInches = "";
+      var heightInches = "";
+      //Place this label on the floor plan later
+      var canvasLabel = "Filler label for user's label input: " + heightString + " x " + widthString;
 
-    for (i = 0; i < widthArray.length; i++) {
-      if (widthArray[i - 1] === "'" && numArray.indexOf(widthArray[i]) !== -1) {
-        widthInches += widthArray[i];
-        if (numArray.indexOf(widthArray[i + 1]) !== -1) {
-          widthInches += widthArray[i + 1];
+      for(i = 0; i < widthArray.length; i++){
+        if(widthArray[i - 1] === "," && numArray.indexOf(widthArray[i]) !== -1){
+          widthInches += widthArray[i];
+          if(numArray.indexOf(widthArray[i + 1]) !== -1){
+            widthInches += widthArray[i + 1];
+          }
         }
       }
-    }
-    widthInches = parseInt(widthInches) * 4;
+      widthInches = parseInt(widthInches) * 4;
 
-    for (i = 0; i < heightArray.length; i++) {
-      if (heightArray[i - 1] === "'" && numArray.indexOf(heightArray[i]) !== -1) {
-        heightInches += heightArray[i];
-        if (numArray.indexOf(heightArray[i + 1]) !== -1) {
-          heightInches += heightArray[i + 1];
+      for(i = 0; i < heightArray.length; i++){
+        if(heightArray[i - 1] === "," && numArray.indexOf(heightArray[i]) !== -1){
+          heightInches += heightArray[i];
+          if(numArray.indexOf(heightArray[i + 1]) !== -1){
+            heightInches += heightArray[i + 1];
+          }
         }
       }
+      heightInches = parseInt(heightInches) * 4;
+
+      console.log(widthFeet + widthInches, heightFeet + heightInches)
+
+      //Creates the floor plan on the DOM based on calculated inputs from user
+      let newCanvas = document.createElement("canvas");
+      newCanvas.classList.add("zdog-canvas"); //CLASS FOR THE MAIN FLOOR PLAN BODY
+      newCanvas.setAttribute("width", widthFeet + widthInches);
+      newCanvas.setAttribute("height", heightFeet + heightInches);
+      document.querySelector("#user-canvas").appendChild(newCanvas);
     }
-    heightInches = parseInt(heightInches) * 4;
-
-    console.log(widthFeet + widthInches, heightFeet + heightInches)
-
-
-    //Creates the floor plan on the DOM based on calculated inputs from user
-    let newCanvas = document.createElement("canvas");
-    newCanvas.classList.add("zdog-canvas"); //CLASS FOR THE MAIN FLOOR PLAN BODY
-    newCanvas.setAttribute("width", widthFeet + widthInches);
-    newCanvas.setAttribute("height", heightFeet + heightInches);
-    document.querySelector("#user-canvas").appendChild(newCanvas);
-  }
 }
-//Code taken from https://www.w3schools.com/howto/howto_js_draggable.asp
+
+//Code learned and inspired from https://www.w3schools.com/howto/howto_js_draggable.asp
 //Allows the user to drag their created items onto the floor plan
 function dragElement(draggableElement) {
   var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
