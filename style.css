@@ -97,6 +97,12 @@ order: 2;
 flex: 3;
 }
 
+/* Modal Styling */
+.modal-content{
+    background-color: antiquewhite;
+    
+}
+
 
 
 
