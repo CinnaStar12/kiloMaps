@@ -23,6 +23,7 @@
         var itemPosLeft = itemList[i].style.left
         var itemColor = itemList[i].getAttribute("data-color");
         var itemShape = itemList[i].getAttribute("data-shape");
+        var itemRotation = itemList[i].getAttribute("data-rotation");
 
         if(itemShape === "polygon"){
             var itemSides = itemList[i].getAttribute("data-sides");
@@ -33,6 +34,7 @@
                 left: itemPosLeft,
                 color: itemColor,
                 shape: itemShape,
+                rotation: itemRotation,
                 polySides: itemSides,
                 polyRadius: itemRadius,
             }
@@ -75,6 +77,21 @@
   }
 
   function getRoom(roomName){
+    db.collection("userRoom").doc(roomName).get()
+    .then(function(doc) {
+        if(doc.exists){
+            console.log(doc)
+            return doc;
+        }
+        else {
+            console.log("Room not found")
+        }
+    })
+    .catch(function(error) {
+        console.log("Error getting room", error);
+    })
 
-
+  }
+  function setRoom(roomSpec){
+    makeFloorPlan(roomSpec.roomWidth, roomSpec.roomHeight)
   }
