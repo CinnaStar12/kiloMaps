@@ -2,7 +2,6 @@ var divCounter = 0;
 var numArray = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
 
 //Creates the floor plan from the user's inputs on the form
-<<<<<<< HEAD
 document.querySelector("#make-floor-plan").addEventListener("click", function (event) {
   event.preventDefault();
   let widthInput = document.querySelector("#canvas-width").value.trim();
@@ -59,90 +58,12 @@ document.querySelector("#make-floor-plan").addEventListener("click", function (e
   //   newCanvas.setAttribute("height", heightFeet + heightInches);
   //   document.querySelector("#user-canvas").appendChild(newCanvas);
   // }
-=======
-document.querySelector("#make-floor-plan").addEventListener("click", function(event){
-    event.preventDefault();
-    let widthInput = document.querySelector("#canvas-width").value.trim();
-    let heightInput = document.querySelector("#canvas-height").value.trim();
-
-    //Returns if any of the inputs are empty
-    if(widthInput === "" || heightInput === ""){
-      return;
-    }
-    else{
-      while(document.querySelector("#user-canvas").firstChild){
-        document.querySelector("#user-canvas").removeChild(document.querySelector("#user-canvas").firstChild);
-      }
-
-      //For scaling, 1 foot = 48 pixels and 1 inch = 4 pixels
-      let widthFeet = parseInt(document.querySelector("#canvas-width").value.trim()) * 48;
-      let heightFeet = parseInt(document.querySelector("#canvas-height").value.trim()) * 48;
-      let widthString = document.querySelector("#canvas-width").value.trim();
-      let heightString = document.querySelector("#canvas-height").value.trim();
-      var widthArraySpace = widthString.split(" ");
-      var heightArraySpace = heightString.split(" ");
-      var widthJoin = widthArraySpace.join();
-      var heightJoin = heightArraySpace.join();
-      var widthArray = widthJoin.split("");
-      var heightArray = heightJoin.split("");
-      var widthInches = "";
-      var heightInches = "";
-      //Place this label on the floor plan later
-      var canvasLabel = "Filler label for user's label input: " + heightString + " x " + widthString;
-
-      for(i = 0; i < widthArray.length; i++){
-        if(widthArray[i - 1] === "," && numArray.indexOf(widthArray[i]) !== -1){
-          widthInches += widthArray[i];
-          if(numArray.indexOf(widthArray[i + 1]) !== -1){
-            widthInches += widthArray[i + 1];
-          }
-        }
-      }
-      widthInches = parseInt(widthInches) * 4;
-
-      for(i = 0; i < heightArray.length; i++){
-        if(heightArray[i - 1] === "," && numArray.indexOf(heightArray[i]) !== -1){
-          heightInches += heightArray[i];
-          if(numArray.indexOf(heightArray[i + 1]) !== -1){
-            heightInches += heightArray[i + 1];
-          }
-        }
-      }
-      heightInches = parseInt(heightInches) * 4;
-
-      console.log(widthFeet + widthInches, heightFeet + heightInches)
-
-    //Creates the floor plan on the DOM based on calculated inputs from user
-    let newCanvas = document.createElement("canvas");
-    newCanvas.classList.add("zdog-canvas"); //CLASS FOR THE MAIN FLOOR PLAN BODY
-    newCanvas.setAttribute("width", widthFeet + widthInches);
-    newCanvas.setAttribute("height", heightFeet + heightInches);
-    document.querySelector("#user-canvas").appendChild(newCanvas);
-  }
->>>>>>> 854eb54537fd4a41685a4e39c894533c12e49aa9
 })
 
 //This event listener is only for the initial html web page we loaded
 document.querySelector("#make-shape").addEventListener("click", function (event) {
   event.preventDefault();
 
-<<<<<<< HEAD
-  //Calculations for feet and inches
-  let widthFeet = parseInt(document.querySelector("#width").value) * 48;
-  let lengthFeet = parseInt(document.querySelector("#length").value) * 48;
-  let widthString = document.querySelector("#width").value;
-  let lengthString = document.querySelector("#length").value;
-  var widthArray = widthString.split("");
-  var lengthArray = lengthString.split("");
-  var widthInches = "";
-  var lengthInches = "";
-
-  for (i = 0; i < widthArray.length; i++) {
-    if (widthArray[i - 1] === "'" && numArray.indexOf(widthArray[i]) !== -1) {
-      widthInches += widthArray[i];
-      if (numArray.indexOf(widthArray[i + 1]) !== -1) {
-        widthInches += widthArray[i + 1];
-=======
   let widthInput = document.querySelector("#width").value.trim();
   let lengthInput = document.querySelector("#length").value.trim();
 
@@ -171,25 +92,16 @@ document.querySelector("#make-shape").addEventListener("click", function (event)
         if(numArray.indexOf(widthArray[i + 1]) !== -1){
           widthInches += widthArray[i + 1];
         }
->>>>>>> 854eb54537fd4a41685a4e39c894533c12e49aa9
       }
     }
     widthInches = parseInt(widthInches) * 4;
 
-<<<<<<< HEAD
-  for (i = 0; i < lengthArray.length; i++) {
-    if (lengthArray[i - 1] === "'" && numArray.indexOf(lengthArray[i]) !== -1) {
-      lengthInches += lengthArray[i];
-      if (numArray.indexOf(lengthArray[i + 1]) !== -1) {
-        lengthInches += lengthArray[i + 1];
-=======
     for(i = 0; i < lengthArray.length; i++){
       if(lengthArray[i - 1] === "," && numArray.indexOf(lengthArray[i]) !== -1){
         lengthInches += lengthArray[i];
         if(numArray.indexOf(lengthArray[i + 1]) !== -1){
           lengthInches += lengthArray[i + 1];
         }
->>>>>>> 854eb54537fd4a41685a4e39c894533c12e49aa9
       }
     }
     lengthInches = parseInt(lengthInches) * 4;
@@ -218,33 +130,6 @@ document.querySelector("#shape-options").addEventListener("change", function (ev
     document.querySelector("#create").addEventListener("click", function (event) {
       event.preventDefault();
 
-<<<<<<< HEAD
-      //Calculations for feet and inches
-      let widthFeet = parseInt(document.querySelector("#width").value) * 48;
-      let lengthFeet = parseInt(document.querySelector("#length").value) * 48;
-      let widthString = document.querySelector("#width").value;
-      let lengthString = document.querySelector("#length").value;
-      var widthArray = widthString.split("");
-      var lengthArray = lengthString.split("");
-      var widthInches = "";
-      var lengthInches = "";
-
-      for (i = 0; i < widthArray.length; i++) {
-        if (widthArray[i - 1] === "'" && numArray.indexOf(widthArray[i]) !== -1) {
-          widthInches += widthArray[i];
-          if (numArray.indexOf(widthArray[i + 1]) !== -1) {
-            widthInches += widthArray[i + 1];
-          }
-        }
-      }
-      widthInches = parseInt(widthInches) * 4;
-
-      for (i = 0; i < lengthArray.length; i++) {
-        if (lengthArray[i - 1] === "'" && numArray.indexOf(lengthArray[i]) !== -1) {
-          lengthInches += lengthArray[i];
-          if (numArray.indexOf(lengthArray[i + 1]) !== -1) {
-            lengthInches += lengthArray[i + 1];
-=======
       let widthInput = document.querySelector("#width").value.trim();
       let lengthInput = document.querySelector("#length").value.trim();
 
@@ -282,7 +167,6 @@ document.querySelector("#shape-options").addEventListener("change", function (ev
             if(numArray.indexOf(lengthArray[i + 1]) !== -1){
               lengthInches += lengthArray[i + 1];
             }
->>>>>>> 854eb54537fd4a41685a4e39c894533c12e49aa9
           }
         }
         lengthInches = parseInt(lengthInches) * 4;
@@ -305,19 +189,6 @@ document.querySelector("#shape-options").addEventListener("change", function (ev
     document.querySelector("#create").addEventListener("click", function (event) {
       event.preventDefault();
 
-<<<<<<< HEAD
-      //Calculations for feet and inches of the radius
-      let radiusFeet = parseInt(document.querySelector("#radius").value) * 48;
-      let radiusString = document.querySelector("#radius").value;
-      var radiusArray = radiusString.split("");
-      var radiusInches = "";
-
-      for (i = 0; i < radiusArray.length; i++) {
-        if (radiusArray[i - 1] === "'" && numArray.indexOf(radiusArray[i]) !== -1) {
-          radiusInches += radiusArray[i];
-          if (numArray.indexOf(radiusArray[i + 1]) !== -1) {
-            radiusInches += radiusArray[i + 1];
-=======
       let radiusInput = document.querySelector("#radius").value.trim();
 
       if(radiusInput === ""){
@@ -338,7 +209,6 @@ document.querySelector("#shape-options").addEventListener("change", function (ev
             if(numArray.indexOf(radiusArray[i + 1]) !== -1){
               radiusInches += radiusArray[i + 1];
             }
->>>>>>> 854eb54537fd4a41685a4e39c894533c12e49aa9
           }
         }
         radiusInches = parseInt(radiusInches) * 4;
@@ -360,19 +230,6 @@ document.querySelector("#shape-options").addEventListener("change", function (ev
     document.querySelector("#create").addEventListener("click", function (event) {
       event.preventDefault();
 
-<<<<<<< HEAD
-      //Calculations for feet and inches of the radius
-      let radiusFeet = parseInt(document.querySelector("#radius").value) * 48;
-      let radiusString = document.querySelector("#radius").value;
-      var radiusArray = radiusString.split("");
-      var radiusInches = "";
-
-      for (i = 0; i < radiusArray.length; i++) {
-        if (radiusArray[i - 1] === "'" && numArray.indexOf(radiusArray[i]) !== -1) {
-          radiusInches += radiusArray[i];
-          if (numArray.indexOf(radiusArray[i + 1]) !== -1) {
-            radiusInches += radiusArray[i + 1];
-=======
       let radiusInput = document.querySelector("#radius").value.trim();
 
       if(radiusInput === ""){
@@ -393,7 +250,6 @@ document.querySelector("#shape-options").addEventListener("change", function (ev
             if(numArray.indexOf(radiusArray[i + 1]) !== -1){
               radiusInches += radiusArray[i + 1];
             }
->>>>>>> 854eb54537fd4a41685a4e39c894533c12e49aa9
           }
         }
         radiusInches = parseInt(radiusInches) * 4;
@@ -415,19 +271,6 @@ document.querySelector("#shape-options").addEventListener("change", function (ev
     document.querySelector("#create").addEventListener("click", function (event) {
       event.preventDefault();
 
-<<<<<<< HEAD
-      //Calculations for feet and inches of the radius
-      let radiusFeet = parseInt(document.querySelector("#radius").value) * 48;
-      let radiusString = document.querySelector("#radius").value;
-      var radiusArray = radiusString.split("");
-      var radiusInches = "";
-
-      for (i = 0; i < radiusArray.length; i++) {
-        if (radiusArray[i - 1] === "'" && numArray.indexOf(radiusArray[i]) !== -1) {
-          radiusInches += radiusArray[i];
-          if (numArray.indexOf(radiusArray[i + 1]) !== -1) {
-            radiusInches += radiusArray[i + 1];
-=======
       let radiusInput = document.querySelector("#radius").value.trim();
 
       if(radiusInput === ""){
@@ -448,7 +291,6 @@ document.querySelector("#shape-options").addEventListener("change", function (ev
             if(numArray.indexOf(radiusArray[i + 1]) !== -1){
               radiusInches += radiusArray[i + 1];
             }
->>>>>>> 854eb54537fd4a41685a4e39c894533c12e49aa9
           }
         }
         radiusInches = parseInt(radiusInches) * 4;
@@ -538,13 +380,8 @@ function createForm(currentShape) {
 }
 
 //Creates the shape(rectangle or ellipse) based on the user's inputs on the form
-<<<<<<< HEAD
-function createShape(shape, userLength, userWidth, userColor, userLabel) {
-  switch (shape) {
-=======
 function createShape(shape, userLength, userWidth, userColor, userLabel, userItemLabel){
   switch(shape){
->>>>>>> 854eb54537fd4a41685a4e39c894533c12e49aa9
 
     case "rectangle":
 
@@ -778,11 +615,7 @@ function createShape(shape, userLength, userWidth, userColor, userLabel, userIte
 }
 
 //Creates the shape(triangle, pentagon, or hexagon) based on the user's inputs on the form
-<<<<<<< HEAD
-function createPolygon(numSides, userRadius, userColor, userLabel) {
-=======
 function createPolygon(numSides, userRadius, userColor, userLabel, userItemLabel){
->>>>>>> 854eb54537fd4a41685a4e39c894533c12e49aa9
 
   //This is the div the canvas will append to and which the user will be able to drag from
   var dragDiv = document.createElement("div");
@@ -936,7 +769,6 @@ function createPolygon(numSides, userRadius, userColor, userLabel, userItemLabel
   }
 }
 
-<<<<<<< HEAD
 function createRoom(widthInput, heightInput) {
   if (widthInput === "" || heightInput === "") {
     return;
@@ -988,9 +820,6 @@ function createRoom(widthInput, heightInput) {
   }
 }
 //Code taken from https://www.w3schools.com/howto/howto_js_draggable.asp
-=======
-//Code learned and inspired from https://www.w3schools.com/howto/howto_js_draggable.asp
->>>>>>> 854eb54537fd4a41685a4e39c894533c12e49aa9
 //Allows the user to drag their created items onto the floor plan
 function dragElement(draggableElement) {
   var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
@@ -1012,14 +841,10 @@ function dragElement(draggableElement) {
 
     //Calling the elementDrag function whenever the cursor moves
     document.onmousemove = elementDrag;
-<<<<<<< HEAD
-  }
-=======
     
     //Calling the closeDragElement function when the mouse unclicks
     document.onmouseup = closeDragElement;
    }
->>>>>>> 854eb54537fd4a41685a4e39c894533c12e49aa9
 
   function elementDrag(e) {
     e = e || window.event;
