@@ -628,7 +628,7 @@ function createPolygon(numSides, userRadius, userColor, userLabel, userItemLabel
   dragDiv.setAttribute("data-color", userColor);
   dragDiv.setAttribute("data-shape", "polygon");
   dragDiv.setAttribute("data-sides", numSides);
-  dragDiv.setAttribute("data-radius", userWidth);
+  dragDiv.setAttribute("data-radius", userRadius);
 
   if (userRadius <= 92) {
     dragDiv.setAttribute("style", "height:" + (userRadius + 100) + "px; width:" + (userRadius + 100) + "px");
