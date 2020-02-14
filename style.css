@@ -57,7 +57,7 @@ SHAPE WILL APPEAR BELOW SHAPE OPTIONS.*/
     padding: 0px;
     
 }
-/*ITEM LSIT WILL GO RIGHT BELOW THE FLOORPLAN BOX*/
+/*ITEM LIST WILL GO RIGHT BELOW THE FLOORPLAN BOX*/
 /* #item-list{
    order: 3;
    flex: 1;
@@ -106,15 +106,18 @@ margin-left: 3px;
 margin-right: 3px;
 max-width: 500px;
 max-height: 500px;
-overflow: scroll;
+/* overflow: scroll; */
 border: 1px rgb(0, 0, 0) dotted;
 }
 #item-list{
     order: 3;
     flex: 1;
     margin-left: 3px;
-    border: 1px dotted rgb(0, 0, 0);
+    /* border: 1px dotted rgb(0, 0, 0); */
+    max-width: 150px;
+    /* overflow: scroll; */
 }
+/*USE BORDER TO KNOW WHERE THE DIV ENDS AND BEGINS*/
 
 /* Modal Styling */
 .modal-content{
