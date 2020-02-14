@@ -1,5 +1,6 @@
 .zdog-canvas{
     background: #FDB;
+    
 }
 
 .draggable{
@@ -50,10 +51,11 @@ SHAPE WILL APPEAR BELOW SHAPE OPTIONS.*/
     flex: 1;
     display: -ms-flexbox;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     flex-direction: row;
-    padding-left: 10%;
-    padding-right: 10%;
+    margin: 0px;
+    padding: 0px;
+    
 }
 /*ITEM LSIT WILL GO RIGHT BELOW THE FLOORPLAN BOX*/
 #item-list{
@@ -67,18 +69,15 @@ SHAPE WILL APPEAR BELOW SHAPE OPTIONS.*/
 #left-box{
     order: 1;
     flex: 1;
+    margin-right: 3px;
     display: -ms-flexbox;
     display: flex;
     justify-content: center;
     flex-direction: column;
-    /* flex-wrap: wrap; */
     max-width: 150px;
+    
 }
-/*TRYING TO FIX THE AWK SPACE BEFORE SHAPE OPTIONS*/
-#fix-options{
-    margin: 0px;
-    padding: 0px;
-}
+
 #shape-options{
     order: 1;
     flex: 1;
@@ -102,9 +101,11 @@ SHAPE WILL APPEAR BELOW SHAPE OPTIONS.*/
 #user-canvas{
 order: 2;
 flex: 2;
+margin-left: 3px;
 max-width: 500px;
 max-height: 500px;
-border: 3px rgb(0, 0, 0) double;
+overflow: scroll;
+border: 1px rgb(0, 0, 0) dotted;
 }
 
 /* Modal Styling */
