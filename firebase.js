@@ -1,5 +1,5 @@
   // Initialize Firebase
-  firebase.initializeApp(firebas);
+  firebase.initializeApp(firebaseConfig);
 
   var db = firebase.firestore();
 
@@ -8,6 +8,7 @@
 
     var roomName = document.querySelector("#floor-plan-name").value;
     sendRoom(grabRoom(roomName));
+    document.querySelector(".modal").setAttribute("class", "modal")
     
   })
 
@@ -23,6 +24,7 @@
         var itemPosLeft = itemList[i].style.left
         var itemColor = itemList[i].getAttribute("data-color");
         var itemShape = itemList[i].getAttribute("data-shape");
+        var itemRotation = itemList[i].style.transform
 
         if(itemShape === "polygon"){
             var itemSides = itemList[i].getAttribute("data-sides");
@@ -33,6 +35,7 @@
                 left: itemPosLeft,
                 color: itemColor,
                 shape: itemShape,
+                rotation: itemRotation,
                 polySides: itemSides,
                 polyRadius: itemRadius,
             }
@@ -48,7 +51,8 @@
                 color: itemColor,
                 shape: itemShape,
                 length: itemLength,
-                width: itemWidth
+                width: itemWidth,
+                rotation: itemRotation
             }
             roomItems.push(itemSpec);
         }
@@ -75,6 +79,45 @@
   }
 
   function getRoom(roomName){
-
+    db.collection("userRoom").doc(roomName).get()
+    .then(function(doc) {
+        if(doc.exists){
+            console.log(doc)
+            return doc;
+        }
+        else {
+            console.log("Room not found")
+        }
+    })
+    .catch(function(error) {
+        console.log("Error getting room", error);
+    })
 
   }
+  function setRoom(roomSpec){
+    createRoom(roomSpec.roomWidth, roomSpec.roomHeight);
+    var items = roomSpec.roomItems
+    for(var i = 0; i <= items.length; i++){
+        if(items[i].shape === "polygon")
+        {
+            createPolygon(items[i].polySides, items[i].polyRadius, items[i].color, items[i].label);
+            document.querySelector("#draggable-" + i).style.top = items[i].top;
+            document.querySelector("#draggable-" + i).style.left = items[i].left;
+            document.querySelector("#draggable-" + i).style.transform = items[i].rotation;
+
+
+        }
+        else{
+            createShape(items[i].shape, items[i].length, items[i].width, items[i].color, items[i].label);
+            document.querySelector("#draggable-" + i).style.top = items[i].top;
+            document.querySelector("#draggable-" + i).style.left = items[i].left;
+            document.querySelector("#draggable-" + i).style.transform = items[i].rotation;
+            
+        }
+    }
+  }
+
+  function getRoomList(){
+
+  }
+

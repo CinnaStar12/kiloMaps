@@ -102,6 +102,12 @@ max-height: 500px;
 border: 3px rgb(0, 0, 0) double;
 }
 
+/* Modal Styling */
+.modal-content{
+    background-color: antiquewhite;
+    
+}
+
 
 
 

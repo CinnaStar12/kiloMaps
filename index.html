@@ -11,7 +11,7 @@
 <body>
 <div class="layer">
     <form id="room-size">
-        Create your kiloMap here! (Format: 12'10" 10'7")
+        Create your kiloMap here! (Format: 12 ft 10 in or 10 feet 7 inches)
         <br>
         1 foot = 48 pixels, 1 inch = 4 pixels
         <br><br>
@@ -23,6 +23,7 @@
 
     <div id="responsive-box">
         <div id="left-box">
+            <input id="save-floor-modal" type="submit" value="Save Floor Plan">
             <select id="shape-options">
                 <option id="rectangle" value="rectangle">
                     Rectangle
@@ -68,13 +69,31 @@
     <div id="item-list">
         List of Items:
     </div>
-</div>
+    <div class="modal" id="save-modal">
+        <div class="modal-background"></div>
+        <div class="modal-content">
+            <div class="modal-content-header">
+                <p class="modal-card-title">Save Room</p>
+            </div>
+            <div class="modal-contant-body">
+                <label for="floor-plan-name">Enter Name of Room</label>
+                <input id ="floor-plan-name" class="input" type="text" placeholder="Name of Room.....">
+            </div>
+            <div class="modal-content-foot">
+                <button class="button is-success" id="save-floor-plan">Save Room</button>
+            </div>
+        </div>
+        <button class="modal-close is-large" aria-label="close"></button>
+      </div>
         
     <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-firestore.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="zdog.dist.js"></script>
     <script src="script.js"></script>
-    <!-- <script src="firebase.js"></script> -->
+    <script src="config.js"></script>
+    <script src="firebase.js"></script>
+    
+
 </body>
 </html>
