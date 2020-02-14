@@ -23,7 +23,10 @@
 
     <div id="responsive-box">
         <div id="left-box">
-            <input id="save-floor-modal" type="submit" value="Save Floor Plan">
+            <!-- <input id="save-floor-modal" type="submit" value="Save Floor Plan"> -->
+            
+            
+            <div id="fix-options">
             <select id="shape-options">
                 <option id="rectangle" value="rectangle">
                     Rectangle
@@ -41,6 +44,7 @@
                     Hexagon
                 </option>
             </select>
+            </div>
             <br><br>
 
             <form id="dimension-input">
@@ -49,13 +53,16 @@
                 <input type="text" id="color" placeholder="Color">
                 <input type="text" id="label" placeholder="label">
                 <input id="make-shape" type="submit" value="Create Object">
+                <br>
+                <input id="save-floor-modal" type="submit" value="Save Floor Plan">
+                <input id="load-floor-modal" type="submit" value="Load Floor Plan">
+
             </form>
             <br><br>
 
             <div id="shape-list">
-                Drag from the Label
-                <br><br>
-                Your Draggable Item:
+                <br>
+                Drag your object when it appears:
             </div>
             <br><br>
 

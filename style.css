@@ -74,6 +74,11 @@ SHAPE WILL APPEAR BELOW SHAPE OPTIONS.*/
     /* flex-wrap: wrap; */
     max-width: 150px;
 }
+/*TRYING TO FIX THE AWK SPACE BEFORE SHAPE OPTIONS*/
+#fix-options{
+    margin: 0px;
+    padding: 0px;
+}
 #shape-options{
     order: 1;
     flex: 1;
