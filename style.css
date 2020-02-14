@@ -1,5 +1,6 @@
 .zdog-canvas{
     background: #FDB;
+    
 }
 
 .draggable{
@@ -50,16 +51,18 @@ SHAPE WILL APPEAR BELOW SHAPE OPTIONS.*/
     flex: 1;
     display: -ms-flexbox;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     flex-direction: row;
-    padding-left: 10%;
-    padding-right: 10%;
+    margin: 0px;
+    padding: 0px;
+    
 }
 /*ITEM LSIT WILL GO RIGHT BELOW THE FLOORPLAN BOX*/
-#item-list{
+/* #item-list{
    order: 3;
    flex: 1;
-}
+} */
+/*JK, THE ITEM LIST GOT MOVED TO THE RIGHT OF THE FLORRPLAN BOX */
 
 
 /*----------NOW INSIDE THE RESPONSIVE BOX!!!!!!!!!!!!*/
@@ -67,13 +70,15 @@ SHAPE WILL APPEAR BELOW SHAPE OPTIONS.*/
 #left-box{
     order: 1;
     flex: 1;
+    margin-right: 3px;
     display: -ms-flexbox;
     display: flex;
     justify-content: center;
     flex-direction: column;
-    /* flex-wrap: wrap; */
     max-width: 150px;
+    
 }
+
 #shape-options{
     order: 1;
     flex: 1;
@@ -85,7 +90,7 @@ SHAPE WILL APPEAR BELOW SHAPE OPTIONS.*/
     display: flex;
     justify-content: center;
     flex-direction: column;
-}/*MAKE THE INPUTS IN COLUMN FORMAT*/
+}
 
 #shape-list{
    order: 3;
@@ -93,13 +98,22 @@ SHAPE WILL APPEAR BELOW SHAPE OPTIONS.*/
 }
 
 /*THIS CANVAS IS THE AREA OF THE FLOORPLAN SIZE*/
-/*THIS IS TECHNICALLY THE RIGHT-BOX, BUT NO NEED FOR AN EXTRA DIV*/
+/*THIS IS TECHNICALLY THE FLOORMAP-BOX, BUT NO NEED FOR AN EXTRA DIV*/
 #user-canvas{
 order: 2;
 flex: 2;
+margin-left: 3px;
+margin-right: 3px;
 max-width: 500px;
 max-height: 500px;
-border: 3px rgb(0, 0, 0) double;
+overflow: scroll;
+border: 1px rgb(0, 0, 0) dotted;
+}
+#item-list{
+    order: 3;
+    flex: 1;
+    margin-left: 3px;
+    border: 1px dotted rgb(0, 0, 0);
 }
 
 /* Modal Styling */
