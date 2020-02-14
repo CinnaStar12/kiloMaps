@@ -62,6 +62,7 @@ SHAPE WILL APPEAR BELOW SHAPE OPTIONS.*/
    order: 3;
    flex: 1;
 } */
+/*JK, THE ITEM LIST GOT MOVED TO THE RIGHT OF THE FLORRPLAN BOX */
 
 
 /*----------NOW INSIDE THE RESPONSIVE BOX!!!!!!!!!!!!*/
@@ -111,7 +112,6 @@ border: 1px rgb(0, 0, 0) dotted;
 #item-list{
     order: 3;
     flex: 1;
-    text-align: left;
     margin-left: 3px;
     border: 1px dotted rgb(0, 0, 0);
 }
