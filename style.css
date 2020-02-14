@@ -58,10 +58,10 @@ SHAPE WILL APPEAR BELOW SHAPE OPTIONS.*/
     
 }
 /*ITEM LSIT WILL GO RIGHT BELOW THE FLOORPLAN BOX*/
-#item-list{
+/* #item-list{
    order: 3;
    flex: 1;
-}
+} */
 
 
 /*----------NOW INSIDE THE RESPONSIVE BOX!!!!!!!!!!!!*/
@@ -89,7 +89,7 @@ SHAPE WILL APPEAR BELOW SHAPE OPTIONS.*/
     display: flex;
     justify-content: center;
     flex-direction: column;
-}/*MAKE THE INPUTS IN COLUMN FORMAT*/
+}
 
 #shape-list{
    order: 3;
@@ -97,15 +97,23 @@ SHAPE WILL APPEAR BELOW SHAPE OPTIONS.*/
 }
 
 /*THIS CANVAS IS THE AREA OF THE FLOORPLAN SIZE*/
-/*THIS IS TECHNICALLY THE RIGHT-BOX, BUT NO NEED FOR AN EXTRA DIV*/
+/*THIS IS TECHNICALLY THE FLOORMAP-BOX, BUT NO NEED FOR AN EXTRA DIV*/
 #user-canvas{
 order: 2;
 flex: 2;
 margin-left: 3px;
+margin-right: 3px;
 max-width: 500px;
 max-height: 500px;
 overflow: scroll;
 border: 1px rgb(0, 0, 0) dotted;
+}
+#item-list{
+    order: 3;
+    flex: 1;
+    text-align: left;
+    margin-left: 3px;
+    border: 1px dotted rgb(0, 0, 0);
 }
 
 /* Modal Styling */
