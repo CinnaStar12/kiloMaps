@@ -94,7 +94,7 @@ SHAPE WILL APPEAR BELOW SHAPE OPTIONS.*/
 
 #shape-list{
    order: 3;
-   flex: 1;
+   flex: 1;         /*somethings wrong here...*/
 }
 
 /*THIS CANVAS IS THE AREA OF THE FLOORPLAN SIZE*/
