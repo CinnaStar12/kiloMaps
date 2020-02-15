@@ -19,7 +19,7 @@ function grabRoom(roomName) {
     for (var i = 0; i < itemList.length; i++) {
         var itemLabel = itemList[i].getAttribute("data-label")
         var itemPosTop = itemList[i].style.top
-        var itemPosLeft = itemList[i].style.top
+        var itemPosLeft = itemList[i].style.left
         var itemColor = itemList[i].getAttribute("data-color");
         var itemShape = itemList[i].getAttribute("data-shape");
         var itemRotation = itemList[i].style.transform
@@ -122,8 +122,8 @@ $("#load-floor-plan").on("click", function(event)
                 console.log(room.roomItems);
                 let newCanvas = document.createElement("canvas");
                 newCanvas.classList.add("zdog-canvas"); //CLASS FOR THE MAIN FLOOR PLAN BODY
-                newCanvas.setAttribute("width", room.roomWidth);
-                newCanvas.setAttribute("height", room.roomHeight);
+                newCanvas.setAttribute("width", room.roomHeight);
+                newCanvas.setAttribute("height", room.roomWidth);
                 document.querySelector("#user-canvas").appendChild(newCanvas);
                 var items = room.roomItems
                 console.log(items)
