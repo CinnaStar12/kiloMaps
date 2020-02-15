@@ -231,7 +231,7 @@ body {
   padding-bottom: 50px;
   padding-left: 15px;
   padding-right: 15px;
-  border: double 4px rgb(255, 255, 255);
+  border: dotted 3px rgb(255, 255, 255);
   border-radius: 100%;
   font-family: Georgia, 'Times New Roman', Times, serif;
 }
