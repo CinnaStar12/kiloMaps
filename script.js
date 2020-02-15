@@ -337,7 +337,7 @@ function createShape(shape, userLength, userWidth, userColor, userLabel, userIte
 
       //This is the div the canvas will append to and which the user will be able to drag from
       var dragDiv = document.createElement("div");
-      dragDiv.innerHTML = userLabel;
+      dragDiv.innerHTML = userItemLabel;
       dragDiv.setAttribute("class", "draggable");
       dragDiv.setAttribute("id", "draggable-" + divCounter)
 
@@ -397,9 +397,9 @@ function createShape(shape, userLength, userWidth, userColor, userLabel, userIte
 
       //Making the div again that will be added to the item-list div
       var listDiv = document.createElement("div");
-      listDiv.innerHTML = userItemLabel;
+      listDiv.innerHTML = userLabel;
       listDiv.setAttribute("id", "draggable-" + divCounter);
-      listDiv.setAttribute("style", "height:" + (userLength / 4 + 75) + "px; width:" + (userWidth / 4 + 20) + "px; text-align:center");
+      listDiv.setAttribute("style", "height:" + (userLength / 5 + 100) + "px; width:" + (userWidth / 5 + 100) + "px; text-align:center");
       listDiv.addEventListener("contextmenu", function (event) {
         event.preventDefault();
         $(this).remove();
@@ -411,8 +411,8 @@ function createShape(shape, userLength, userWidth, userColor, userLabel, userIte
       var listCanvasElement = "canvas-child-" + divCounter;
       var newListCanvas = document.createElement("canvas");
       newListCanvas.classList.add(listCanvasElement);
-      newListCanvas.setAttribute("width", (userWidth / 4 + 20));
-      newListCanvas.setAttribute("height", (userLength / 4 + 20));
+      newListCanvas.setAttribute("width", (userWidth / 5 + 100));
+      newListCanvas.setAttribute("height", (userLength / 5 + 50));
       document.querySelector("#draggable-" + divCounter).appendChild(newListCanvas);
 
       //Clicking the canvas will rotate the entire div by 15 degrees
@@ -435,8 +435,8 @@ function createShape(shape, userLength, userWidth, userColor, userLabel, userIte
 
       new Zdog.Rect({
         addTo: listIll,
-        width: (userWidth / 4),
-        height: (userLength / 4),
+        width: (userWidth / 5),
+        height: (userLength / 5),
         translate: { z: 10 },
         color: userColor,
         fill: true
@@ -447,7 +447,7 @@ function createShape(shape, userLength, userWidth, userColor, userLabel, userIte
 
       //This is the div the canvas will append to and which the user will be able to drag from
       var dragDiv = document.createElement("div");
-      dragDiv.innerHTML = userLabel
+      dragDiv.innerHTML = userItemLabel
       dragDiv.setAttribute("class", "draggable");
       dragDiv.setAttribute("id", "draggable-" + divCounter)
 
@@ -504,9 +504,9 @@ function createShape(shape, userLength, userWidth, userColor, userLabel, userIte
 
       //Making the div again that will be added to the item-list div
       var listDiv = document.createElement("div");
-      listDiv.innerHTML = userItemLabel;
+      listDiv.innerHTML = userLabel;
       listDiv.setAttribute("id", "draggable-" + divCounter);
-      listDiv.setAttribute("style", "height:" + (userLength / 4 + 55) + "px; width:" + (userWidth / 4 + 25) + "px; text-align:center");
+      listDiv.setAttribute("style", "height:" + (userLength / 5 + 100) + "px; width:" + (userWidth / 5 + 100) + "px; text-align:center");
       listDiv.addEventListener("contextmenu", function (event) {
         event.preventDefault();
         $(this).remove();
@@ -518,8 +518,8 @@ function createShape(shape, userLength, userWidth, userColor, userLabel, userIte
       var listCanvasElement = "canvas-child-" + divCounter;
       var newListCanvas = document.createElement("canvas");
       newListCanvas.classList.add(listCanvasElement);
-      newListCanvas.setAttribute("width", (userWidth / 4 + 5));
-      newListCanvas.setAttribute("height", (userLength / 4 + 5));
+      newListCanvas.setAttribute("width", (userWidth / 5 + 100));
+      newListCanvas.setAttribute("height", (userLength / 5 + 50));
       document.querySelector("#draggable-" + divCounter).appendChild(newListCanvas);
 
       //Clicking the canvas will rotate the entire div by 15 degrees
@@ -542,8 +542,8 @@ function createShape(shape, userLength, userWidth, userColor, userLabel, userIte
 
       new Zdog.Ellipse({
         addTo: listIll,
-        width: (userWidth / 4),
-        height: (userLength / 4),
+        width: (userWidth / 5),
+        height: (userLength / 5),
         translate: { z: 10 },
         color: userColor,
         fill: true
@@ -569,7 +569,7 @@ function createPolygon(numSides, userRadius, userColor, userLabel, userItemLabel
 
   //This is the div the canvas will append to and which the user will be able to drag from
   var dragDiv = document.createElement("div");
-  dragDiv.innerHTML = userLabel;
+  dragDiv.innerHTML = userItemLabel;
   dragDiv.setAttribute("class", "draggable");
   dragDiv.setAttribute("id", "draggable-" + divCounter)
 
@@ -645,16 +645,16 @@ function createPolygon(numSides, userRadius, userColor, userLabel, userItemLabel
 
   //Making the div again that will be added to the item-list div
   var listDiv = document.createElement("div");
-  listDiv.innerHTML = userItemLabel;
+  listDiv.innerHTML = userLabel;
   listDiv.setAttribute("id", "draggable-" + divCounter);
   if (userRadius <= 92) {
-    listDiv.setAttribute("style", "height:" + (userRadius / 4 + 75) + "px; width:" + (userRadius / 4 + 75) + "px; text-align:center");
+    listDiv.setAttribute("style", "height:" + (55) + "px; width:" + (55) + "px; text-align:center; margin-bottom:50px");
   }
   if (userRadius < 152) { //Any triangle more than 3'2" is too big for the canvas
-    listDiv.setAttribute("style", "height:" + (userRadius / 4 + 80) + "px; width:" + (userRadius / 4 + 80) + "px; text-align:center");
+    listDiv.setAttribute("style", "height:" + (55) + "px; width:" + (55) + "px; text-align:center; margin-bottom:50px");
   }
   else {
-    listDiv.setAttribute("style", "height:" + (userRadius / 4 + 85) + "px; width:" + (userRadius / 4 + 85) + "px; text-align:center");
+    listDiv.setAttribute("style", "height:" + (55) + "px; width:" + (55) + "px; text-align:center; margin-bottom:50px");
   }
   listDiv.addEventListener("contextmenu", function (event) {
     event.preventDefault();
@@ -668,16 +668,16 @@ function createPolygon(numSides, userRadius, userColor, userLabel, userItemLabel
   var newListCanvas = document.createElement("canvas");
   newListCanvas.classList.add(listCanvasElement);
   if (userRadius <= 92) {
-    newListCanvas.setAttribute("width", parseInt(userRadius / 4 + 75));
-    newListCanvas.setAttribute("height", parseInt(userRadius / 4 + 75));
+    newListCanvas.setAttribute("width", parseInt(55));
+    newListCanvas.setAttribute("height", parseInt(55));
   }
   else if (userRadius < 152) {
-    newListCanvas.setAttribute("width", parseInt(userRadius / 4 + 80));
-    newListCanvas.setAttribute("height", parseInt(userRadius / 4 + 80));
+    newListCanvas.setAttribute("width", parseInt(55));
+    newListCanvas.setAttribute("height", parseInt(55));
   }
   else {
-    newListCanvas.setAttribute("width", parseInt(userRadius / 4 + 85));
-    newListCanvas.setAttribute("height", parseInt(userRadius / 4 + 85));
+    newListCanvas.setAttribute("width", parseInt(55));
+    newListCanvas.setAttribute("height", parseInt(55));
   }
   document.querySelector("#draggable-" + divCounter).appendChild(newListCanvas);
 
@@ -701,7 +701,7 @@ function createPolygon(numSides, userRadius, userColor, userLabel, userItemLabel
 
   new Zdog.Polygon({
     addTo: listIll,
-    radius: (userRadius / 4),
+    radius: 25,
     sides: numSides,
     translate: { z: 10 },
     color: userColor,
