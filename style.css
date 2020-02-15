@@ -13,7 +13,12 @@
 
 
 /* KIKI'S ATTEMPT TO STYLE BETTER */
-
+html,
+body{
+    background-image: url(../kiloMaps/assets/images/back3.jpg);
+    background-attachment: fixed;
+    background-position: center;
+}
 /* Setting the spacing/centering of layers */
 html,
 body,
@@ -29,6 +34,7 @@ ONE INPUT THE FLOOR PLAN SIZE AND
 THE OTHER WILL HOLD ALL THE OTHER
 OPTIONS IN A ROW FORMAT */
 body{
+
     display: -ms-flexbox;
     display: flex;
     justify-content: center;
