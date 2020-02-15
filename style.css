@@ -1,9 +1,11 @@
+
 .zdog-canvas{
     background: #f5b371;
+
     
 }
 
-.draggable{
+.draggable {
     position: absolute;
     text-align: center;
 }
@@ -17,7 +19,7 @@
 /* Setting the spacing/centering of layers */
 html,
 body,
-.layer{ 
+.layer { 
     width: 100%;
     height: 100%;
     margin: 0px;
@@ -31,7 +33,7 @@ body,
 ONE INPUT THE FLOOR PLAN SIZE AND
 THE OTHER WILL HOLD ALL THE OTHER
 OPTIONS IN A ROW FORMAT */
-body{
+body {
 
     display: -ms-flexbox;
     display: flex;
@@ -42,20 +44,25 @@ body{
     min-height: 100px;
     text-align: center;
 
+    margin-left: 15%;
+    margin-right:15%;
+    margin-bottom: 10%;
+    margin-top: 4%;
+
     font-weight: bold;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   
 }
 /*OPTIONS TO SIZE FLOORPLAN COMES FIRST*/
-#room-size{
-    order: 1;
+#room-size {
+    order: 2;
     flex: 1;
 }
 /*GOING TO PUT SHAPE OPTIONS ON LEFT
 AND FLOORPLAN ON RIGHT. DRAGGABLE
 SHAPE WILL APPEAR BELOW SHAPE OPTIONS.*/
-#responsive-box{
-    order: 2;
+#responsive-box {
+    order: 3;
     flex: 1;
     display: -ms-flexbox;
     display: flex;
@@ -75,7 +82,7 @@ SHAPE WILL APPEAR BELOW SHAPE OPTIONS.*/
 
 /*----------NOW INSIDE THE RESPONSIVE BOX!!!!!!!!!!!!*/
 /*LETS DO LEFT-BOX FIRST*/
-#left-box{
+#left-box {
     order: 1;
     flex: 1;
     margin-right: 3px;
@@ -87,11 +94,11 @@ SHAPE WILL APPEAR BELOW SHAPE OPTIONS.*/
     
 }
 
-#shape-options{
+#shape-options {
     order: 1;
     flex: 1;
 }
-#dimension-input{
+#dimension-input {
     order: 2;
     flex: 1;
     display: -ms-flexbox;
@@ -100,14 +107,14 @@ SHAPE WILL APPEAR BELOW SHAPE OPTIONS.*/
     flex-direction: column;
 }
 
-#shape-list{
+#shape-list {
    order: 3;
    flex: 1;         /*somethings wrong here...*/
 }
 
 /*THIS CANVAS IS THE AREA OF THE FLOORPLAN SIZE*/
 /*THIS IS TECHNICALLY THE FLOORMAP-BOX, BUT NO NEED FOR AN EXTRA DIV*/
-#user-canvas{
+#user-canvas {
 order: 2;
 flex: 2;
 margin-left: 3px;
@@ -117,7 +124,8 @@ max-height: 500px;
 /* overflow: scroll; */
 border: 1px rgb(0, 0, 0) dotted;
 }
-#item-list{
+#item-list {
+    text-align: left;
     order: 3;
     flex: 1;
     margin-left: 3px;
@@ -128,7 +136,7 @@ border: 1px rgb(0, 0, 0) dotted;
 /*USE BORDER TO KNOW WHERE THE DIV ENDS AND BEGINS*/
 
 /* Modal Styling */
-.modal-content{
+.modal-content {
     background-color: rgb(99, 99, 99);
     
 }
@@ -214,24 +222,31 @@ body {
 .cover-container {
   max-width: 50em;
 }
-
+ /* ------------------- FOOTER -------------------------*/
+footer {
+    order: 4;
+    flex: 1;
+}
  /* ------------------- HEADER -------------------------*/
 
 .masthead {
+  order: 1;
+  flex: 1;
   margin-bottom: 2rem;
   justify-content: center;
+  
 }
 .masthead-brand {
   display: -ms-flexbox;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
   color: rgb(255, 255, 255);
   padding-top: 50px;
   padding-bottom: 50px;
   padding-left: 15px;
   padding-right: 15px;
-  border: double 4px rgb(255, 255, 255);
+  border: dotted 1px rgb(255, 255, 255);
   border-radius: 100%;
   font-family: Georgia, 'Times New Roman', Times, serif;
 }
@@ -266,13 +281,18 @@ body {
 }
 
 /* ---------------------- FOOTER --------------------------------- */
-
+.mastfoot {
+    order: 4;
+    /* flex: 1; */
+    display: -ms-flexbox;
+    display: flex;
+    /* justify-content: center; */
+}
 .footerbox {
   display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
-  margin-top: 5%;
-  margin-bottom: 5%;
+  /* justify-content: space-around; */
+  
   padding: 0;
   border-top: solid 1.3px rgb(255, 255, 255);
   border-bottom: solid 1.3px rgb(255, 255, 255);
