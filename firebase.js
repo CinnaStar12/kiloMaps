@@ -1,35 +1,33 @@
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
 
-  var db = firebase.firestore();
+var db = firebase.firestore();
 
-  document.querySelector("#save-floor-plan").addEventListener("click", function(event){
+document.querySelector("#save-floor-plan").addEventListener("click", function (event) {
     event.preventDefault()
 
     var roomName = document.querySelector("#floor-plan-name").value;
     sendRoom(grabRoom(roomName));
     document.querySelector(".modal").setAttribute("class", "modal")
-    
-  })
 
+})
+function grabRoom(roomName) {
 
-  function grabRoom(roomName){
-    
     var itemList = document.getElementsByClassName("draggable")
     var roomItems = [];
 
-    for(var i = 0; i < itemList.length; i++){
+    for (var i = 0; i < itemList.length; i++) {
         var itemLabel = itemList[i].getAttribute("data-label")
         var itemPosTop = itemList[i].style.top
-        var itemPosLeft = itemList[i].style.left
+        var itemPosLeft = itemList[i].style.top
         var itemColor = itemList[i].getAttribute("data-color");
         var itemShape = itemList[i].getAttribute("data-shape");
         var itemRotation = itemList[i].style.transform
 
-        if(itemShape === "polygon"){
+        if (itemShape === "polygon") {
             var itemSides = itemList[i].getAttribute("data-sides");
             var itemRadius = itemList[i].getAttribute("data-radius");
-            var itemSpec ={
+            var itemSpec = {
                 label: itemLabel,
                 top: itemPosTop,
                 left: itemPosLeft,
@@ -41,10 +39,10 @@
             }
             roomItems.push(itemSpec);
         }
-        else{
+        else {
             var itemWidth = itemList[i].getAttribute("data-width");
             var itemLength = itemList[i].getAttribute("data-length");
-            var itemSpec ={
+            var itemSpec = {
                 label: itemLabel,
                 top: itemPosTop,
                 left: itemPosLeft,
@@ -57,67 +55,99 @@
             roomItems.push(itemSpec);
         }
     }
-    
+
     var roomSpec = {
         roomHeight: document.querySelector(".zdog-canvas").getAttribute("height"),
         roomWidth: document.querySelector(".zdog-canvas").getAttribute("width"),
         roomItems: roomItems,
         roomName: roomName
-      }
-      return roomSpec;
-
-  }
-
-  function sendRoom(roomSpec){
-    db.collection("userRooms").doc(roomSpec.roomName).set(roomSpec)
-    .then(function(){
-        console.log("Room Saved Sucessfully")
-    })
-    .catch(function(error) {
-        console.error("Error writing document: ", error);
-    })
-  }
-
-  function getRoom(roomName){
-    db.collection("userRoom").doc(roomName).get()
-    .then(function(doc) {
-        if(doc.exists){
-            console.log(doc)
-            return doc;
-        }
-        else {
-            console.log("Room not found")
-        }
-    })
-    .catch(function(error) {
-        console.log("Error getting room", error);
-    })
-
-  }
-  function setRoom(roomSpec){
-    createRoom(roomSpec.roomWidth, roomSpec.roomHeight);
-    var items = roomSpec.roomItems
-    for(var i = 0; i <= items.length; i++){
-        if(items[i].shape === "polygon")
-        {
-            createPolygon(items[i].polySides, items[i].polyRadius, items[i].color, items[i].label);
-            document.querySelector("#draggable-" + i).style.top = items[i].top;
-            document.querySelector("#draggable-" + i).style.left = items[i].left;
-            document.querySelector("#draggable-" + i).style.transform = items[i].rotation;
-
-
-        }
-        else{
-            createShape(items[i].shape, items[i].length, items[i].width, items[i].color, items[i].label);
-            document.querySelector("#draggable-" + i).style.top = items[i].top;
-            document.querySelector("#draggable-" + i).style.left = items[i].left;
-            document.querySelector("#draggable-" + i).style.transform = items[i].rotation;
-            
-        }
     }
-  }
+    return roomSpec;
 
-  function getRoomList(){
+}
 
-  }
+function sendRoom(roomSpec) {
+    db.collection("userRooms").doc(roomSpec.roomName).set(roomSpec)
+        .then(function () {
+            console.log("Room Saved Sucessfully")
+        })
+        .catch(function (error) {
+            console.error("Error writing document: ", error);
+        })
+}
 
+class Room {
+    constructor(roomName, roomWidth, roomItems, roomHeight) {
+        this.roomName = roomName;
+        this.roomWidth = roomWidth;
+        this.roomItems = roomItems;
+        this.roomHeight = roomHeight;
+    }
+    toString() {
+        return this.roomHeight, + ', ' + this.roomWidth + ', ' + this.roomItems + ', ' + this.roomName;
+
+    }
+
+}
+
+roomConverter = {
+    toFirestore: function (room) {
+        return {
+            roomName: room.roomName,
+            roomHeight: room.roomHeight,
+            roomItems: room.roomItems,
+            roomWidth: room.roomWidth,
+        }
+
+    },
+    fromFirestore: function (snapshot, options) {
+        const data = snapshot.data(options);
+        return new Room(data.roomName, data.roomHeight, data.roomItems, data.roomWidth)
+    }
+}
+
+$("#load-floor-plan").on("click", function(event)
+{
+    event.preventDefault();
+    var roomGet = $("#floor-plan-name-load").val()
+    db.collection("userRooms").doc(roomGet)
+        .withConverter(roomConverter)
+        .get().then(function (doc) {
+            if (doc.exists) {
+                room = doc.data()
+                console.log(room);
+                console.log(typeof room);
+                console.log(room.roomName);
+                console.log(room.roomHeight);
+                console.log(room.roomItems);
+                let newCanvas = document.createElement("canvas");
+                newCanvas.classList.add("zdog-canvas"); //CLASS FOR THE MAIN FLOOR PLAN BODY
+                newCanvas.setAttribute("width", room.roomWidth);
+                newCanvas.setAttribute("height", room.roomHeight);
+                document.querySelector("#user-canvas").appendChild(newCanvas);
+                var items = room.roomItems
+                console.log(items)
+                for(var j = 0; j < items.length; j++){
+                    if(items[j].shape == "polygon"){
+                        createPolygon(items[j].polySides, items[j].polyRadius, items[j].color, items[j].label, items[j].label)
+                        document.querySelector("#draggable-" + j).style.top = items[j].top;
+                        document.querySelector("#draggable-" + j).style.left = items[j].left;
+                        document.querySelector("#draggable-" + j).style.transform = items[j].rotation;
+                    }
+                    else{
+                        createShape(items[j].shape, items[j].length, items[j].width, items[j].color, items[j].label, items[j].label);
+                        document.querySelector("#draggable-" + j).style.top = items[j].top;
+                        document.querySelector("#draggable-" + j).style.left = items[j].left;
+                        document.querySelector("#draggable-" + j).style.transform = items[j].rotation;
+                    }
+                    }
+                }
+            
+            else {
+                console.log("No room found")
+            }}).catch(function (error) {
+                console.log("error", error)
+            });
+})
+
+    

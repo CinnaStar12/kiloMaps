@@ -23,6 +23,7 @@ document.querySelector("#make-shape").addEventListener("click", function (event)
 
   else{
     //Calculations for feet and inches
+
     let widthFeet = parseInt(document.querySelector("#width").value.trim()) * 48;
     let lengthFeet = parseInt(document.querySelector("#length").value.trim()) * 48;
     let widthString = document.querySelector("#width").value.trim();
@@ -344,9 +345,9 @@ function createShape(shape, userLength, userWidth, userColor, userLabel, userIte
       //Inserted some data labels to make the database storage simpler ~~~AB
       dragDiv.setAttribute("data-label", userLabel);
       dragDiv.setAttribute("data-color", userColor);
-      dragDiv.setAttribute("data-shape", "rectangle");
       dragDiv.setAttribute("data-length", userLength);
       dragDiv.setAttribute("data-width", userWidth);
+      dragDiv.setAttribute("data-shape", "rectangle");
       dragDiv.setAttribute("style", "height:" + (userLength + 75) + "px; width:" + (userWidth + 20) + "px");
       dragDiv.addEventListener("contextmenu", function (event) {
         event.preventDefault();
@@ -765,7 +766,8 @@ function createRoom(widthInput, heightInput) {
       heightInches = parseInt(heightInches) * 4;
 
       console.log(widthFeet + widthInches, heightFeet + heightInches)
-
+      
+      
       //Creates the floor plan on the DOM based on calculated inputs from user
       let newCanvas = document.createElement("canvas");
       newCanvas.classList.add("zdog-canvas"); //CLASS FOR THE MAIN FLOOR PLAN BODY
@@ -774,6 +776,7 @@ function createRoom(widthInput, heightInput) {
       document.querySelector("#user-canvas").appendChild(newCanvas);
     }
 }
+
 
 //Code learned and inspired from https://www.w3schools.com/howto/howto_js_draggable.asp
 //Allows the user to drag their created items onto the floor plan
@@ -823,14 +826,29 @@ function dragElement(draggableElement) {
     document.onmouseup = null;
   }
 }
+function restoreRoom(width, height){
+  let newCanvas = document.createElement("canvas");
+  console.log(width + height);
+  newCanvas.classList.add("zdog-canvas"); //CLASS FOR THE MAIN FLOOR PLAN BODY
+  newCanvas.setAttribute("width", width);
+  newCanvas.setAttribute("height", height);
+  document.querySelector("#user-canvas").appendChild(newCanvas);
+}
 
 
 //Modal Handling ~~~ AB
-$("#save-floor-modal").on("click", function(){
+$("#save-floor-modal").on("click", function(e){
+  e.preventDefault();
   $("#save-modal").attr("class", "modal is-active")
 
 })
 
+
 $(".modal-close").on("click", function(){
   $(".modal").attr("class", "modal")
+})
+
+$("#load-floor-modal").on("click", function(e){
+  e.preventDefault();
+  $("#load-modal").attr("class", "modal is-active")
 })
