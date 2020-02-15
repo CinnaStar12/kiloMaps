@@ -135,8 +135,11 @@ $("#load-floor-plan").on("click", function(event)
                         document.querySelector("#draggable-" + j).style.transform = items[j].rotation;
                     }
                     else{
-                        createShape(items[j].shape, items[j].length, items[j].width, items[j].color, items[j].label, items[j].label);
-                        console.log("here")
+                        var itemWidthParse = parseInt(items[j].width);
+                        var itemLengthParse = parseInt(items[j].length);
+                        console.log(itemWidthParse, itemLengthParse)
+
+                        createShape(items[j].shape, itemLengthParse, itemWidthParse, items[j].color, items[j].label, items[j].label);
                         document.querySelector("#draggable-" + j).style.top = items[j].top;
                         document.querySelector("#draggable-" + j).style.left = items[j].left;
                         document.querySelector("#draggable-" + j).style.transform = items[j].rotation;
