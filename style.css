@@ -1,5 +1,5 @@
 .zdog-canvas{
-    background: #FDB;
+    background: rgb(255, 6, 81);
     
 }
 
@@ -124,7 +124,254 @@ border: 1px rgb(0, 0, 0) dotted;
     background-color: antiquewhite;
     
 }
+/*SOME OLD STUFF WAS DOIN-----*/
 
+a,
+a:focus {
+  color: rgb(15, 197, 188);
+  text-decoration: none;
+}
+a:hover {
+  color: rgb(209, 64, 7);
+  text-decoration: none;
+}
+.navbox {
+  text-decoration: none;
+  padding: .25rem 0;
+  font-weight: 700;
+  color: rgb(15, 197, 188);
+  background-color: transparent;
+  border-bottom: .25rem solid transparent;
+}
+.currentPage {
+  text-decoration: none;
+  padding: .25rem 0;
+  font-weight: 700;
+  color: rgb(209, 64, 7);
+  background-color: transparent;
+  border-bottom: .25rem solid rgb(15, 197, 188);
+}
+.navlink:hover,
+.navlink:focus,
+.currentPage:hover,
+.currentPage:focus {
+  border-bottom-color: rgb(209, 64, 7);
+}
+.navbox .navlink + .navlink {
+  margin-left: 1rem;
+}
+.navlink:active,
+.currentPage:active,
+a:active {
+  color: rgb(255, 255, 255);
+}
+.btn-secondary {
+  color: rgb(15, 197, 188);
+  text-shadow: none; /* Prevent inheritance from `body` */
+  background-color: rgba(0, 0, 0, 0);
+  border: 1px solid rgb(209, 64, 7);
+  align-content: center;
+  padding: 1px;
+  width: 200px;
+}
+.btn-secondary:hover {
+  color: rgb(209, 64, 7);
+  background-color: rgba(0, 0, 0, 0);
+  text-shadow: none; /* Prevent inheritance from `body` */
+  border: 1px solid rgb(15, 197, 188);
+  align-content: center;
+  padding: 1px;
+  width: 200px;
+}
+.btn-secondary:active,
+.btn-secondary:focus {
+  color: rgb(255, 255, 255);      /*THIS PART IS SUPER FUCKED*/
+  background-color: rgb(0, 0, 0);
+  border-color: rgb(255, 255, 255);
+  
+  
+  
+}
+
+/* Everything above has to do with links -----------------------------
+--------- BELOW starts with body, followed by everything else ------------ */
+
+html,
+body {
+  
+  height: 100%;
+  background-image: url(../images/black_scales/black_scales.png);
+  background-attachment: fixed;
+  background-position: center;
+}
+body {
+  display: -ms-flexbox;
+  display: flex;
+  color: rgb(255, 255, 255);
+  text-shadow: 0 .05rem .1rem rgba(0, 0, 0, 0);
+  box-shadow: inset 0 0 5rem rgba(0, 0, 0, 0);
+}
+.cover-container {
+  max-width: 50em;
+}
+
+ /* ------------------- HEADER -------------------------*/
+
+.masthead {
+  margin-bottom: 2rem;
+  justify-content: center;
+}
+.masthead-brand {
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  color: rgb(255, 255, 255);
+  padding-top: 50px;
+  padding-bottom: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  border: double 4px rgb(15, 197, 188);
+  border-radius: 100%;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+#name {
+  flex: 2;
+  order: 1;
+  font-weight: bolder;
+}
+#sub {
+  flex: 1;
+  order: 2;
+  color: rgb(209, 64, 7);
+  font-size: xx-small;
+  margin-top: 20px;
+}
+
+/* ------- Media Queries ----------*/
+
+@media (min-width: 48em) {
+  .masthead-brand {
+    float: left;
+  }
+  .navbox {
+    float: right;
+  }
+}
+.cover {
+  padding: 0 1.5rem;
+}
+.cover .btn-lg {
+  padding: .75rem 1.25rem;
+  font-weight: 700;
+}
+
+/* ---------------------- FOOTER --------------------------------- */
+
+.footerbox {
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  padding: 0;
+  border-top: solid 1.3px rgb(15, 197, 188);
+  border-bottom: solid 1.3px rgb(15, 197, 188);
+  text-align: center;
+  font-size: xx-small;
+}
+#tag {
+  text-align: left;
+  flex: 4;
+  order: 1;
+  margin-top: 14px;
+}
+
+#githublink {
+  flex: 1;
+  order: 3;
+  margin-top: 14px;
+}
+
+/* -------- end of footer --------------------------------*/
+
+/* BODY CONTENT STUFF LIKE FONTS ---------------------------------------------- */
+
+.mainbox {
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.summ {
+  flex: 3;
+  order: 1;
+  text-align: center;
+  font-weight: bold;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  min-width: 300px;
+}
+.picwinfo {
+  flex: 2;
+  order: 2;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: column;
+}
+.me {
+  flex: 1;
+  order: 1;
+}
+.lead {
+  flex: 2;
+  order: 2;
+  margin-top: 10px;
+}
+img {
+  align-content: center;
+  border: 1px solid rgb(15, 197, 188);
+  border-radius: 4px;
+  padding: 5px;
+  width: 200px;
+}
+
+/* CONTACT BOXES FOR CONTACT PAGE ----------------------------*/
+
+.contactbox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  margin-top: 5%;
+}
+#subject {
+  width: 300px;
+  height: 300px;
+}
+.submit {
+  text-decoration: none;
+  text-shadow: none;
+  padding: 10px 20px 11px !important;
+  font-size: 21px !important;
+  background-color: rgb(15, 197, 188);
+  font-weight: bold;
+  text-shadow: 1px 1px rgb(15, 197, 188);
+  color: rgb(255, 255, 255);
+  border-radius: 100px;
+  -moz-border-radius: 100px;
+  -webkit-border-radius: 100px;
+  border: 1px solid rgb(15, 197, 188);
+  box-shadow: 0 3px 0 rgb(255, 255, 255) inset;
+  -moz-box-shadow: 0 3px 0 rgb(255, 255, 255) inset;
+  -webkit-box-shadow: 0 3px 0 rgb(255, 255, 255) inset;
+}
+
+/* MAINBOX FOR PORTFOLIO HTML ----- USING BOOTSTRAP ROWS AND COLUMNS HERE ----- */
+
+
+.des {
+  margin-top: 5px;
+}
 
 
 
