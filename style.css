@@ -1,5 +1,5 @@
 .zdog-canvas{
-    background: rgb(255, 6, 81);
+    background: rgb(255, 255, 255);
     
 }
 
@@ -13,20 +13,18 @@
 
 
 /* KIKI'S ATTEMPT TO STYLE BETTER */
-html,
-body{
-    background-image: url(../kiloMaps/assets/images/back3.jpg);
-    background-attachment: fixed;
-    background-position: center;
-}
+
 /* Setting the spacing/centering of layers */
 html,
 body,
 .layer{ 
     width: 100%;
     height: 100%;
-    margin: 10px;
-    padding: 30px;
+    margin: 0px;
+    padding: 0px;
+    background-image: url(../kiloMaps/assets/images/back3.jpg);
+    background-attachment: fixed;
+    background-position: center;
 }
 
 /*MADE THE BODY INTO 2 BOXES.
@@ -43,6 +41,10 @@ body{
     min-width: 100px;
     min-height: 100px;
     text-align: center;
+
+    font-weight: bold;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  
 }
 /*OPTIONS TO SIZE FLOORPLAN COMES FIRST*/
 #room-size{
@@ -127,25 +129,25 @@ border: 1px rgb(0, 0, 0) dotted;
 
 /* Modal Styling */
 .modal-content{
-    background-color: antiquewhite;
+    background-color: rgb(99, 99, 99);
     
 }
 /*SOME OLD STUFF WAS DOIN-----*/
 
 a,
 a:focus {
-  color: rgb(15, 197, 188);
+  color: rgb(255, 255, 255);
   text-decoration: none;
 }
 a:hover {
-  color: rgb(209, 64, 7);
+  color: rgb(99, 99, 99);
   text-decoration: none;
 }
 .navbox {
   text-decoration: none;
   padding: .25rem 0;
   font-weight: 700;
-  color: rgb(15, 197, 188);
+  color: rgb(255, 255, 255);
   background-color: transparent;
   border-bottom: .25rem solid transparent;
 }
@@ -153,15 +155,15 @@ a:hover {
   text-decoration: none;
   padding: .25rem 0;
   font-weight: 700;
-  color: rgb(209, 64, 7);
+  color: rgb(99, 99, 99);
   background-color: transparent;
-  border-bottom: .25rem solid rgb(15, 197, 188);
+  border-bottom: .25rem solid rgb(255, 255, 255);
 }
 .navlink:hover,
 .navlink:focus,
 .currentPage:hover,
 .currentPage:focus {
-  border-bottom-color: rgb(209, 64, 7);
+  border-bottom-color: rgb(99, 99, 99);
 }
 .navbox .navlink + .navlink {
   margin-left: 1rem;
@@ -172,19 +174,19 @@ a:active {
   color: rgb(255, 255, 255);
 }
 .btn-secondary {
-  color: rgb(15, 197, 188);
+  color: rgb(255, 255, 255);
   text-shadow: none; /* Prevent inheritance from `body` */
   background-color: rgba(0, 0, 0, 0);
-  border: 1px solid rgb(209, 64, 7);
+  border: 1px solid rgb(99, 99, 99);
   align-content: center;
   padding: 1px;
   width: 200px;
 }
 .btn-secondary:hover {
-  color: rgb(209, 64, 7);
+  color: rgb(99, 99, 99);
   background-color: rgba(0, 0, 0, 0);
   text-shadow: none; /* Prevent inheritance from `body` */
-  border: 1px solid rgb(15, 197, 188);
+  border: 1px solid rgb(255, 255, 255);
   align-content: center;
   padding: 1px;
   width: 200px;
@@ -202,14 +204,6 @@ a:active {
 /* Everything above has to do with links -----------------------------
 --------- BELOW starts with body, followed by everything else ------------ */
 
-html,
-body {
-  
-  height: 100%;
-  background-image: url(../images/black_scales/black_scales.png);
-  background-attachment: fixed;
-  background-position: center;
-}
 body {
   display: -ms-flexbox;
   display: flex;
@@ -234,10 +228,10 @@ body {
   justify-content: space-around;
   color: rgb(255, 255, 255);
   padding-top: 50px;
-  padding-bottom: 10px;
+  padding-bottom: 50px;
   padding-left: 15px;
   padding-right: 15px;
-  border: double 4px rgb(15, 197, 188);
+  border: double 4px rgb(255, 255, 255);
   border-radius: 100%;
   font-family: Georgia, 'Times New Roman', Times, serif;
 }
@@ -249,9 +243,8 @@ body {
 #sub {
   flex: 1;
   order: 2;
-  color: rgb(209, 64, 7);
+  color: rgb(99, 99, 99);
   font-size: xx-small;
-  margin-top: 20px;
 }
 
 /* ------- Media Queries ----------*/
@@ -281,8 +274,8 @@ body {
   margin-top: 5%;
   margin-bottom: 5%;
   padding: 0;
-  border-top: solid 1.3px rgb(15, 197, 188);
-  border-bottom: solid 1.3px rgb(15, 197, 188);
+  border-top: solid 1.3px rgb(255, 255, 255);
+  border-bottom: solid 1.3px rgb(255, 255, 255);
   text-align: center;
   font-size: xx-small;
 }
@@ -309,33 +302,10 @@ body {
   flex-direction: row;
   flex-wrap: wrap;
 }
-.summ {
-  flex: 3;
-  order: 1;
-  text-align: center;
-  font-weight: bold;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  min-width: 300px;
-}
-.picwinfo {
-  flex: 2;
-  order: 2;
-  display: -ms-flexbox;
-  display: flex;
-  flex-direction: column;
-}
-.me {
-  flex: 1;
-  order: 1;
-}
-.lead {
-  flex: 2;
-  order: 2;
-  margin-top: 10px;
-}
+
 img {
   align-content: center;
-  border: 1px solid rgb(15, 197, 188);
+  border: 1px solid rgb(255, 255, 255);
   border-radius: 4px;
   padding: 5px;
   width: 200px;
