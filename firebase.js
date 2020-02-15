@@ -122,8 +122,8 @@ $("#load-floor-plan").on("click", function(event)
                 console.log(room.roomItems);
                 let newCanvas = document.createElement("canvas");
                 newCanvas.classList.add("zdog-canvas"); //CLASS FOR THE MAIN FLOOR PLAN BODY
-                newCanvas.setAttribute("width", room.roomHeight);
-                newCanvas.setAttribute("height", room.roomWidth);
+                newCanvas.setAttribute("width", room.roomWidth);
+                newCanvas.setAttribute("height", room.roomHeight);
                 document.querySelector("#user-canvas").appendChild(newCanvas);
                 var items = room.roomItems
                 console.log(items)
@@ -136,6 +136,7 @@ $("#load-floor-plan").on("click", function(event)
                     }
                     else{
                         createShape(items[j].shape, items[j].length, items[j].width, items[j].color, items[j].label, items[j].label);
+                        console.log("here")
                         document.querySelector("#draggable-" + j).style.top = items[j].top;
                         document.querySelector("#draggable-" + j).style.left = items[j].left;
                         document.querySelector("#draggable-" + j).style.transform = items[j].rotation;
