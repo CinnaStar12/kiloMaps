@@ -123,7 +123,7 @@ $("#load-floor-plan").on("click", function(event)
                 let newCanvas = document.createElement("canvas");
                 newCanvas.classList.add("zdog-canvas"); //CLASS FOR THE MAIN FLOOR PLAN BODY
                 newCanvas.setAttribute("width", room.roomWidth);
-                newCanvas.setAttribute("height", room.roomHeight);
+                newCanvas.setAttribute("height", room.roomWidth);
                 document.querySelector("#user-canvas").appendChild(newCanvas);
                 var items = room.roomItems
                 console.log(items)
