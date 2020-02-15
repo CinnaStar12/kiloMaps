@@ -115,18 +115,13 @@ $("#load-floor-plan").on("click", function(event)
         .get().then(function (doc) {
             if (doc.exists) {
                 room = doc.data()
-                console.log(room);
-                console.log(typeof room);
-                console.log(room.roomName);
-                console.log(room.roomHeight);
-                console.log(room.roomItems);
                 let newCanvas = document.createElement("canvas");
                 newCanvas.classList.add("zdog-canvas"); //CLASS FOR THE MAIN FLOOR PLAN BODY
                 newCanvas.setAttribute("width", room.roomHeight);
                 newCanvas.setAttribute("height", room.roomWidth);
                 document.querySelector("#user-canvas").appendChild(newCanvas);
                 var items = room.roomItems
-                console.log(items)
+
                 for(var j = 0; j < items.length; j++){
                     if(items[j].shape == "polygon"){
                         createPolygon(items[j].polySides, items[j].polyRadius, items[j].color, items[j].label, items[j].label)
