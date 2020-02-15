@@ -89,8 +89,8 @@ document.querySelector("#shape-options").addEventListener("change", function (ev
       }
       else{
         //Calculations for feet and inches
-        let widthFeet = parseInt(document.querySelector("#width").value.trim()) * 48;
-        let lengthFeet = parseInt(document.querySelector("#length").value.trim()) * 48;
+        let widthFeet = parseInt(document.querySelector("#width").value.trim()) * 36;
+        let lengthFeet = parseInt(document.querySelector("#length").value.trim()) * 36;
         let widthString = document.querySelector("#width").value.trim();
         let lengthString = document.querySelector("#length").value.trim();
         var widthArraySpace = widthString.split(" ");
@@ -110,7 +110,7 @@ document.querySelector("#shape-options").addEventListener("change", function (ev
             }
           }
         }
-        widthInches = parseInt(widthInches) * 4;
+        widthInches = parseInt(widthInches) * 3;
       
         for(i = 0; i < lengthArray.length; i++){
           if(lengthArray[i - 1] === "," && numArray.indexOf(lengthArray[i]) !== -1){
@@ -120,7 +120,7 @@ document.querySelector("#shape-options").addEventListener("change", function (ev
             }
           }
         }
-        lengthInches = parseInt(lengthInches) * 4;
+        lengthInches = parseInt(lengthInches) * 3;
 
         //Stores the calculated inputs and calls the createShape function
         var userLength = lengthFeet + lengthInches;
@@ -147,7 +147,7 @@ document.querySelector("#shape-options").addEventListener("change", function (ev
       }
       else{
         //Calculations for feet and inches of the radius
-        let radiusFeet = parseInt(document.querySelector("#radius").value.trim()) * 48;
+        let radiusFeet = parseInt(document.querySelector("#radius").value.trim()) * 36;
         let radiusString = document.querySelector("#radius").value.trim();
         var radiusArraySpace = radiusString.split(" ");
         var radiusJoin = radiusArraySpace.join();
@@ -162,7 +162,7 @@ document.querySelector("#shape-options").addEventListener("change", function (ev
             }
           }
         }
-        radiusInches = parseInt(radiusInches) * 4;
+        radiusInches = parseInt(radiusInches) * 3;
 
         //Calls the createPolygon function with the calculated inputs
         var userRadius = radiusFeet + radiusInches;
@@ -188,7 +188,7 @@ document.querySelector("#shape-options").addEventListener("change", function (ev
       }
       else{
         //Calculations for feet and inches of the radius
-        let radiusFeet = parseInt(document.querySelector("#radius").value.trim()) * 48;
+        let radiusFeet = parseInt(document.querySelector("#radius").value.trim()) * 36;
         let radiusString = document.querySelector("#radius").value.trim();
         var radiusArraySpace = radiusString.split(" ");
         var radiusJoin = radiusArraySpace.join();
@@ -203,7 +203,7 @@ document.querySelector("#shape-options").addEventListener("change", function (ev
             }
           }
         }
-        radiusInches = parseInt(radiusInches) * 4;
+        radiusInches = parseInt(radiusInches) * 3;
 
         //Calls the createPolygon function with the calculated inputs
         var userRadius = radiusFeet + radiusInches;
@@ -229,7 +229,7 @@ document.querySelector("#shape-options").addEventListener("change", function (ev
       }
       else{
         //Calculations for feet and inches of the radius
-        let radiusFeet = parseInt(document.querySelector("#radius").value.trim()) * 48;
+        let radiusFeet = parseInt(document.querySelector("#radius").value.trim()) * 36;
         let radiusString = document.querySelector("#radius").value.trim();
         var radiusArraySpace = radiusString.split(" ");
         var radiusJoin = radiusArraySpace.join();
@@ -244,7 +244,7 @@ document.querySelector("#shape-options").addEventListener("change", function (ev
             }
           }
         }
-        radiusInches = parseInt(radiusInches) * 4;
+        radiusInches = parseInt(radiusInches) * 3;
 
         //Calls the createPolygon function with the calculated inputs
         var userRadius = radiusFeet + radiusInches;
@@ -730,8 +730,8 @@ function createRoom(widthInput, heightInput) {
       }
 
       //For scaling, 1 foot = 48 pixels and 1 inch = 4 pixels
-      let widthFeet = parseInt(document.querySelector("#canvas-width").value.trim()) * 48;
-      let heightFeet = parseInt(document.querySelector("#canvas-height").value.trim()) * 48;
+      let widthFeet = parseInt(document.querySelector("#canvas-width").value.trim()) * 36;
+      let heightFeet = parseInt(document.querySelector("#canvas-height").value.trim()) * 36;
       let widthString = document.querySelector("#canvas-width").value.trim();
       let heightString = document.querySelector("#canvas-height").value.trim();
       var widthArraySpace = widthString.split(" ");
@@ -753,7 +753,7 @@ function createRoom(widthInput, heightInput) {
           }
         }
       }
-      widthInches = parseInt(widthInches) * 4;
+      widthInches = parseInt(widthInches) * 3;
 
       for(i = 0; i < heightArray.length; i++){
         if(heightArray[i - 1] === "," && numArray.indexOf(heightArray[i]) !== -1){
@@ -763,7 +763,7 @@ function createRoom(widthInput, heightInput) {
           }
         }
       }
-      heightInches = parseInt(heightInches) * 4;
+      heightInches = parseInt(heightInches) * 3;
 
       console.log(widthFeet + widthInches, heightFeet + heightInches)
       
