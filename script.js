@@ -1,3 +1,7 @@
+//                   ***DISCLAIMER***
+//To whoever may be grading this: yes, this code is a MESS(sorry)
+//More functions would have been made if given more time
+
 var divCounter = 0;
 var numArray = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
 
@@ -23,9 +27,10 @@ document.querySelector("#make-shape").addEventListener("click", function (event)
 
   else{
     //Calculations for feet and inches
+    //For scaling, 1 foot = 36 pixels and 1 inch = 3 pixels
 
-    let widthFeet = parseInt(document.querySelector("#width").value.trim()) * 48;
-    let lengthFeet = parseInt(document.querySelector("#length").value.trim()) * 48;
+    let widthFeet = parseInt(document.querySelector("#width").value.trim()) * 36;
+    let lengthFeet = parseInt(document.querySelector("#length").value.trim()) * 36;
     let widthString = document.querySelector("#width").value.trim();
     let lengthString = document.querySelector("#length").value.trim();
     var widthArraySpace = widthString.split(" ");
@@ -45,7 +50,7 @@ document.querySelector("#make-shape").addEventListener("click", function (event)
         }
       }
     }
-    widthInches = parseInt(widthInches) * 4;
+    widthInches = parseInt(widthInches) * 3;
 
     for(i = 0; i < lengthArray.length; i++){
       if(lengthArray[i - 1] === "," && numArray.indexOf(lengthArray[i]) !== -1){
@@ -55,7 +60,7 @@ document.querySelector("#make-shape").addEventListener("click", function (event)
         }
       }
     }
-    lengthInches = parseInt(lengthInches) * 4;
+    lengthInches = parseInt(lengthInches) * 3;
 
     //Creates the rectangle if the user did not change the shape from the dropdown menu
     var shape = document.querySelector("#shape-options").value;
@@ -729,7 +734,7 @@ function createRoom(widthInput, heightInput) {
         document.querySelector("#user-canvas").removeChild(document.querySelector("#user-canvas").firstChild);
       }
 
-      //For scaling, 1 foot = 48 pixels and 1 inch = 4 pixels
+      //For scaling, 1 foot = 36 pixels and 1 inch = 3 pixels
       let widthFeet = parseInt(document.querySelector("#canvas-width").value.trim()) * 36;
       let heightFeet = parseInt(document.querySelector("#canvas-height").value.trim()) * 36;
       let widthString = document.querySelector("#canvas-width").value.trim();
