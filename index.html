@@ -63,9 +63,9 @@
                 <input type="text" id="label" placeholder="label">
                 <input id="make-shape" type="submit" value="Create Object">
                 <br>
-                <input id="save-floor-modal" type="submit" value="Save Floor Plan">
-                <input id="load-floor-modal" type="submit" value="Load Floor Plan">
             </form>
+            <input id="save-floor-modal" type="submit" value="Save Floor Plan">
+            <input id="load-floor-modal" type="submit" value="Load Floor Plan">
 
             <br><br>
 
@@ -86,8 +86,6 @@
             Your Shapes:
         </div>
     </div>
-
-    
     <div class="modal" id="save-modal">
         <div class="modal-background"></div>
         
@@ -109,8 +107,34 @@
 
         <button class="modal-close is-large" aria-label="close"></button>
     </div>
+    <div class="modal" id="load-modal">
+        <div class="modal-background"></div>
+        
+        <div class="modal-content">
+            <div class="modal-content-header">
+                <p class="modal-card-title">Load Room</p>
+            </div>
+
+            <div class="modal-contant-body">
+                <label for="floor-plan-name">Enter Name of Room to Load:</label>
+                
+                <input id ="floor-plan-name-load" class="input" type="text" placeholder="Name of Room.....">
+            </div>
+
+            <div class="modal-content-foot">
+                <button class="button is-success" id="load-floor-plan">Load Room</button>
+            </div>
+        </div>
+
+        <button class="modal-close is-large" aria-label="close"></button>
+    </div>
+
 
     <!-- <footer class="mastfoot cover-container mt-auto">
+
+    
+    
+    
         <div class="footerbox">
             <p id="tag">Website design by team pink</p>
     

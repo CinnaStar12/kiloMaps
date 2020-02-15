@@ -23,6 +23,7 @@ document.querySelector("#make-shape").addEventListener("click", function (event)
 
   else{
     //Calculations for feet and inches
+
     let widthFeet = parseInt(document.querySelector("#width").value.trim()) * 48;
     let lengthFeet = parseInt(document.querySelector("#length").value.trim()) * 48;
     let widthString = document.querySelector("#width").value.trim();
@@ -88,8 +89,8 @@ document.querySelector("#shape-options").addEventListener("change", function (ev
       }
       else{
         //Calculations for feet and inches
-        let widthFeet = parseInt(document.querySelector("#width").value.trim()) * 48;
-        let lengthFeet = parseInt(document.querySelector("#length").value.trim()) * 48;
+        let widthFeet = parseInt(document.querySelector("#width").value.trim()) * 36;
+        let lengthFeet = parseInt(document.querySelector("#length").value.trim()) * 36;
         let widthString = document.querySelector("#width").value.trim();
         let lengthString = document.querySelector("#length").value.trim();
         var widthArraySpace = widthString.split(" ");
@@ -109,7 +110,7 @@ document.querySelector("#shape-options").addEventListener("change", function (ev
             }
           }
         }
-        widthInches = parseInt(widthInches) * 4;
+        widthInches = parseInt(widthInches) * 3;
       
         for(i = 0; i < lengthArray.length; i++){
           if(lengthArray[i - 1] === "," && numArray.indexOf(lengthArray[i]) !== -1){
@@ -119,7 +120,7 @@ document.querySelector("#shape-options").addEventListener("change", function (ev
             }
           }
         }
-        lengthInches = parseInt(lengthInches) * 4;
+        lengthInches = parseInt(lengthInches) * 3;
 
         //Stores the calculated inputs and calls the createShape function
         var userLength = lengthFeet + lengthInches;
@@ -146,7 +147,7 @@ document.querySelector("#shape-options").addEventListener("change", function (ev
       }
       else{
         //Calculations for feet and inches of the radius
-        let radiusFeet = parseInt(document.querySelector("#radius").value.trim()) * 48;
+        let radiusFeet = parseInt(document.querySelector("#radius").value.trim()) * 36;
         let radiusString = document.querySelector("#radius").value.trim();
         var radiusArraySpace = radiusString.split(" ");
         var radiusJoin = radiusArraySpace.join();
@@ -161,7 +162,7 @@ document.querySelector("#shape-options").addEventListener("change", function (ev
             }
           }
         }
-        radiusInches = parseInt(radiusInches) * 4;
+        radiusInches = parseInt(radiusInches) * 3;
 
         //Calls the createPolygon function with the calculated inputs
         var userRadius = radiusFeet + radiusInches;
@@ -187,7 +188,7 @@ document.querySelector("#shape-options").addEventListener("change", function (ev
       }
       else{
         //Calculations for feet and inches of the radius
-        let radiusFeet = parseInt(document.querySelector("#radius").value.trim()) * 48;
+        let radiusFeet = parseInt(document.querySelector("#radius").value.trim()) * 36;
         let radiusString = document.querySelector("#radius").value.trim();
         var radiusArraySpace = radiusString.split(" ");
         var radiusJoin = radiusArraySpace.join();
@@ -202,7 +203,7 @@ document.querySelector("#shape-options").addEventListener("change", function (ev
             }
           }
         }
-        radiusInches = parseInt(radiusInches) * 4;
+        radiusInches = parseInt(radiusInches) * 3;
 
         //Calls the createPolygon function with the calculated inputs
         var userRadius = radiusFeet + radiusInches;
@@ -228,7 +229,7 @@ document.querySelector("#shape-options").addEventListener("change", function (ev
       }
       else{
         //Calculations for feet and inches of the radius
-        let radiusFeet = parseInt(document.querySelector("#radius").value.trim()) * 48;
+        let radiusFeet = parseInt(document.querySelector("#radius").value.trim()) * 36;
         let radiusString = document.querySelector("#radius").value.trim();
         var radiusArraySpace = radiusString.split(" ");
         var radiusJoin = radiusArraySpace.join();
@@ -243,7 +244,7 @@ document.querySelector("#shape-options").addEventListener("change", function (ev
             }
           }
         }
-        radiusInches = parseInt(radiusInches) * 4;
+        radiusInches = parseInt(radiusInches) * 3;
 
         //Calls the createPolygon function with the calculated inputs
         var userRadius = radiusFeet + radiusInches;
@@ -337,16 +338,16 @@ function createShape(shape, userLength, userWidth, userColor, userLabel, userIte
 
       //This is the div the canvas will append to and which the user will be able to drag from
       var dragDiv = document.createElement("div");
-      dragDiv.innerHTML = userLabel;
+      dragDiv.innerHTML = userItemLabel;
       dragDiv.setAttribute("class", "draggable");
       dragDiv.setAttribute("id", "draggable-" + divCounter)
 
       //Inserted some data labels to make the database storage simpler ~~~AB
       dragDiv.setAttribute("data-label", userLabel);
       dragDiv.setAttribute("data-color", userColor);
-      dragDiv.setAttribute("data-shape", "rectangle");
       dragDiv.setAttribute("data-length", userLength);
       dragDiv.setAttribute("data-width", userWidth);
+      dragDiv.setAttribute("data-shape", "rectangle");
       dragDiv.setAttribute("style", "height:" + (userLength + 75) + "px; width:" + (userWidth + 20) + "px");
       dragDiv.addEventListener("contextmenu", function (event) {
         event.preventDefault();
@@ -397,9 +398,9 @@ function createShape(shape, userLength, userWidth, userColor, userLabel, userIte
 
       //Making the div again that will be added to the item-list div
       var listDiv = document.createElement("div");
-      listDiv.innerHTML = userItemLabel;
+      listDiv.innerHTML = userLabel;
       listDiv.setAttribute("id", "draggable-" + divCounter);
-      listDiv.setAttribute("style", "height:" + (userLength / 4 + 75) + "px; width:" + (userWidth / 4 + 20) + "px; text-align:center");
+      listDiv.setAttribute("style", "height:" + (userLength / 5 + 100) + "px; width:" + (userWidth / 5 + 100) + "px; text-align:center");
       listDiv.addEventListener("contextmenu", function (event) {
         event.preventDefault();
         $(this).remove();
@@ -411,8 +412,8 @@ function createShape(shape, userLength, userWidth, userColor, userLabel, userIte
       var listCanvasElement = "canvas-child-" + divCounter;
       var newListCanvas = document.createElement("canvas");
       newListCanvas.classList.add(listCanvasElement);
-      newListCanvas.setAttribute("width", (userWidth / 4 + 20));
-      newListCanvas.setAttribute("height", (userLength / 4 + 20));
+      newListCanvas.setAttribute("width", (userWidth / 5 + 100));
+      newListCanvas.setAttribute("height", (userLength / 5 + 50));
       document.querySelector("#draggable-" + divCounter).appendChild(newListCanvas);
 
       //Clicking the canvas will rotate the entire div by 15 degrees
@@ -435,8 +436,8 @@ function createShape(shape, userLength, userWidth, userColor, userLabel, userIte
 
       new Zdog.Rect({
         addTo: listIll,
-        width: (userWidth / 4),
-        height: (userLength / 4),
+        width: (userWidth / 5),
+        height: (userLength / 5),
         translate: { z: 10 },
         color: userColor,
         fill: true
@@ -447,7 +448,7 @@ function createShape(shape, userLength, userWidth, userColor, userLabel, userIte
 
       //This is the div the canvas will append to and which the user will be able to drag from
       var dragDiv = document.createElement("div");
-      dragDiv.innerHTML = userLabel
+      dragDiv.innerHTML = userItemLabel
       dragDiv.setAttribute("class", "draggable");
       dragDiv.setAttribute("id", "draggable-" + divCounter)
 
@@ -504,9 +505,9 @@ function createShape(shape, userLength, userWidth, userColor, userLabel, userIte
 
       //Making the div again that will be added to the item-list div
       var listDiv = document.createElement("div");
-      listDiv.innerHTML = userItemLabel;
+      listDiv.innerHTML = userLabel;
       listDiv.setAttribute("id", "draggable-" + divCounter);
-      listDiv.setAttribute("style", "height:" + (userLength / 4 + 55) + "px; width:" + (userWidth / 4 + 25) + "px; text-align:center");
+      listDiv.setAttribute("style", "height:" + (userLength / 5 + 100) + "px; width:" + (userWidth / 5 + 100) + "px; text-align:center");
       listDiv.addEventListener("contextmenu", function (event) {
         event.preventDefault();
         $(this).remove();
@@ -518,8 +519,8 @@ function createShape(shape, userLength, userWidth, userColor, userLabel, userIte
       var listCanvasElement = "canvas-child-" + divCounter;
       var newListCanvas = document.createElement("canvas");
       newListCanvas.classList.add(listCanvasElement);
-      newListCanvas.setAttribute("width", (userWidth / 4 + 5));
-      newListCanvas.setAttribute("height", (userLength / 4 + 5));
+      newListCanvas.setAttribute("width", (userWidth / 5 + 100));
+      newListCanvas.setAttribute("height", (userLength / 5 + 50));
       document.querySelector("#draggable-" + divCounter).appendChild(newListCanvas);
 
       //Clicking the canvas will rotate the entire div by 15 degrees
@@ -542,8 +543,8 @@ function createShape(shape, userLength, userWidth, userColor, userLabel, userIte
 
       new Zdog.Ellipse({
         addTo: listIll,
-        width: (userWidth / 4),
-        height: (userLength / 4),
+        width: (userWidth / 5),
+        height: (userLength / 5),
         translate: { z: 10 },
         color: userColor,
         fill: true
@@ -569,7 +570,7 @@ function createPolygon(numSides, userRadius, userColor, userLabel, userItemLabel
 
   //This is the div the canvas will append to and which the user will be able to drag from
   var dragDiv = document.createElement("div");
-  dragDiv.innerHTML = userLabel;
+  dragDiv.innerHTML = userItemLabel;
   dragDiv.setAttribute("class", "draggable");
   dragDiv.setAttribute("id", "draggable-" + divCounter)
 
@@ -645,16 +646,16 @@ function createPolygon(numSides, userRadius, userColor, userLabel, userItemLabel
 
   //Making the div again that will be added to the item-list div
   var listDiv = document.createElement("div");
-  listDiv.innerHTML = userItemLabel;
+  listDiv.innerHTML = userLabel;
   listDiv.setAttribute("id", "draggable-" + divCounter);
   if (userRadius <= 92) {
-    listDiv.setAttribute("style", "height:" + (userRadius / 4 + 75) + "px; width:" + (userRadius / 4 + 75) + "px; text-align:center");
+    listDiv.setAttribute("style", "height:" + (55) + "px; width:" + (55) + "px; text-align:center; margin-bottom:50px");
   }
   if (userRadius < 152) { //Any triangle more than 3'2" is too big for the canvas
-    listDiv.setAttribute("style", "height:" + (userRadius / 4 + 80) + "px; width:" + (userRadius / 4 + 80) + "px; text-align:center");
+    listDiv.setAttribute("style", "height:" + (55) + "px; width:" + (55) + "px; text-align:center; margin-bottom:50px");
   }
   else {
-    listDiv.setAttribute("style", "height:" + (userRadius / 4 + 85) + "px; width:" + (userRadius / 4 + 85) + "px; text-align:center");
+    listDiv.setAttribute("style", "height:" + (55) + "px; width:" + (55) + "px; text-align:center; margin-bottom:50px");
   }
   listDiv.addEventListener("contextmenu", function (event) {
     event.preventDefault();
@@ -668,16 +669,16 @@ function createPolygon(numSides, userRadius, userColor, userLabel, userItemLabel
   var newListCanvas = document.createElement("canvas");
   newListCanvas.classList.add(listCanvasElement);
   if (userRadius <= 92) {
-    newListCanvas.setAttribute("width", parseInt(userRadius / 4 + 75));
-    newListCanvas.setAttribute("height", parseInt(userRadius / 4 + 75));
+    newListCanvas.setAttribute("width", parseInt(55));
+    newListCanvas.setAttribute("height", parseInt(55));
   }
   else if (userRadius < 152) {
-    newListCanvas.setAttribute("width", parseInt(userRadius / 4 + 80));
-    newListCanvas.setAttribute("height", parseInt(userRadius / 4 + 80));
+    newListCanvas.setAttribute("width", parseInt(55));
+    newListCanvas.setAttribute("height", parseInt(55));
   }
   else {
-    newListCanvas.setAttribute("width", parseInt(userRadius / 4 + 85));
-    newListCanvas.setAttribute("height", parseInt(userRadius / 4 + 85));
+    newListCanvas.setAttribute("width", parseInt(55));
+    newListCanvas.setAttribute("height", parseInt(55));
   }
   document.querySelector("#draggable-" + divCounter).appendChild(newListCanvas);
 
@@ -701,7 +702,7 @@ function createPolygon(numSides, userRadius, userColor, userLabel, userItemLabel
 
   new Zdog.Polygon({
     addTo: listIll,
-    radius: (userRadius / 4),
+    radius: 25,
     sides: numSides,
     translate: { z: 10 },
     color: userColor,
@@ -729,8 +730,8 @@ function createRoom(widthInput, heightInput) {
       }
 
       //For scaling, 1 foot = 48 pixels and 1 inch = 4 pixels
-      let widthFeet = parseInt(document.querySelector("#canvas-width").value.trim()) * 48;
-      let heightFeet = parseInt(document.querySelector("#canvas-height").value.trim()) * 48;
+      let widthFeet = parseInt(document.querySelector("#canvas-width").value.trim()) * 36;
+      let heightFeet = parseInt(document.querySelector("#canvas-height").value.trim()) * 36;
       let widthString = document.querySelector("#canvas-width").value.trim();
       let heightString = document.querySelector("#canvas-height").value.trim();
       var widthArraySpace = widthString.split(" ");
@@ -752,7 +753,7 @@ function createRoom(widthInput, heightInput) {
           }
         }
       }
-      widthInches = parseInt(widthInches) * 4;
+      widthInches = parseInt(widthInches) * 3;
 
       for(i = 0; i < heightArray.length; i++){
         if(heightArray[i - 1] === "," && numArray.indexOf(heightArray[i]) !== -1){
@@ -762,10 +763,11 @@ function createRoom(widthInput, heightInput) {
           }
         }
       }
-      heightInches = parseInt(heightInches) * 4;
+      heightInches = parseInt(heightInches) * 3;
 
       console.log(widthFeet + widthInches, heightFeet + heightInches)
-
+      
+      
       //Creates the floor plan on the DOM based on calculated inputs from user
       let newCanvas = document.createElement("canvas");
       newCanvas.classList.add("zdog-canvas"); //CLASS FOR THE MAIN FLOOR PLAN BODY
@@ -774,6 +776,7 @@ function createRoom(widthInput, heightInput) {
       document.querySelector("#user-canvas").appendChild(newCanvas);
     }
 }
+
 
 //Code learned and inspired from https://www.w3schools.com/howto/howto_js_draggable.asp
 //Allows the user to drag their created items onto the floor plan
@@ -823,14 +826,29 @@ function dragElement(draggableElement) {
     document.onmouseup = null;
   }
 }
+function restoreRoom(width, height){
+  let newCanvas = document.createElement("canvas");
+  console.log(width + height);
+  newCanvas.classList.add("zdog-canvas"); //CLASS FOR THE MAIN FLOOR PLAN BODY
+  newCanvas.setAttribute("width", width);
+  newCanvas.setAttribute("height", height);
+  document.querySelector("#user-canvas").appendChild(newCanvas);
+}
 
 
 //Modal Handling ~~~ AB
-$("#save-floor-modal").on("click", function(){
+$("#save-floor-modal").on("click", function(e){
+  e.preventDefault();
   $("#save-modal").attr("class", "modal is-active")
 
 })
 
+
 $(".modal-close").on("click", function(){
   $(".modal").attr("class", "modal")
+})
+
+$("#load-floor-modal").on("click", function(e){
+  e.preventDefault();
+  $("#load-modal").attr("class", "modal is-active")
 })
