@@ -1,5 +1,7 @@
-.zdog-canvas {
-    background: rgb(255, 255, 255);
+
+.zdog-canvas{
+    background: #f5b371;
+
     
 }
 
@@ -22,7 +24,7 @@ body,
     height: 100%;
     margin: 0px;
     padding: 0px;
-    background-image: url(../kiloMaps/assets/images/back3.jpg);
+    background-image: url(assets/images/back3.jpg);
     background-attachment: fixed;
     background-position: center;
 }
