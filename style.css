@@ -50,9 +50,8 @@ body {
     min-height: 100px;
     text-align: center;
 
-    margin: 5%;
-    margin-top: 0px;
-    margin-top: 3px;
+    margin: 3%;
+    
 
     /* font-weight: bold; */
     /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
@@ -255,6 +254,7 @@ footer {
   border: dotted 1px rgb(255, 255, 255);
   border-radius: 100%;
   font-family: Georgia, 'Times New Roman', Times, serif;
+  margin: 5px;
 }
 #name {
   flex: 2;
