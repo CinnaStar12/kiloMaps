@@ -40,24 +40,36 @@ body {
     justify-content: center;
     flex-direction: column;
 
-    min-width: 100px;
+     
+    color: rgb(255, 255, 255);
+    text-shadow: 0 .05rem .1rem rgba(0, 0, 0, 0);
+    box-shadow: inset 0 0 5rem rgba(0, 0, 0, 0);
+    
+
+    /* min-width: 50px; */
     min-height: 100px;
     text-align: center;
 
-    margin-left: 15%;
-    margin-right:15%;
-    margin-bottom: 10%;
-    margin-top: 4%;
+    margin: 5%;
+    margin-top: 0px;
+    margin-top: 3px;
 
-    font-weight: bold;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    /* font-weight: bold; */
+    /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
+    font-family: Georgia, 'Times New Roman', Times, serif;
+
   
 }
 /*OPTIONS TO SIZE FLOORPLAN COMES FIRST*/
 #room-size {
     order: 2;
     flex: 1;
+    text-align: left;
+    margin-left: 20%;
+    margin-right:20%;
+    
 }
+
 /*GOING TO PUT SHAPE OPTIONS ON LEFT
 AND FLOORPLAN ON RIGHT. DRAGGABLE
 SHAPE WILL APPEAR BELOW SHAPE OPTIONS.*/
@@ -68,7 +80,7 @@ SHAPE WILL APPEAR BELOW SHAPE OPTIONS.*/
     display: flex;
     justify-content: center;
     flex-direction: row;
-    margin: 0px;
+    /* margin: 0px; */
     padding: 0px;
     
 }
@@ -212,13 +224,7 @@ a:active {
 /* Everything above has to do with links -----------------------------
 --------- BELOW starts with body, followed by everything else ------------ */
 
-body {
-  display: -ms-flexbox;
-  display: flex;
-  color: rgb(255, 255, 255);
-  text-shadow: 0 .05rem .1rem rgba(0, 0, 0, 0);
-  box-shadow: inset 0 0 5rem rgba(0, 0, 0, 0);
-}
+
 .cover-container {
   max-width: 50em;
 }
@@ -233,14 +239,14 @@ footer {
   order: 1;
   flex: 1;
   margin-bottom: 2rem;
-  justify-content: center;
+  justify-content: left;
   
 }
 .masthead-brand {
   display: -ms-flexbox;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   color: rgb(255, 255, 255);
   padding-top: 50px;
   padding-bottom: 50px;
